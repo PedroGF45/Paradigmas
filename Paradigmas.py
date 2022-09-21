@@ -21,6 +21,10 @@ h = float(3.6)
 print(f, g, h)
 
 #Introducao aos valores booleanos and, or, not
-i = (2 > 3) and (5/0 > 7) #False
-# error - division by zero:  j = (5/0 > 7 ) and (2 > 3)
-print(i)
+#i = (2 > 3) and (5/0 > 7) False
+#j = (5/0 > 7 ) and (2 > 3) error - division by zero:  
+
+#Outras operacoes de igualdade
+k = 1 if 3 == 2 else "3 nao e igual a 2"
+l = "3 e diferente de 2" if 3 != 2 else 1
+print (k, l)
