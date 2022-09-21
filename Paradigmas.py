@@ -19,3 +19,8 @@ f = round(3.6)
 g = int(3.6)
 h = float(3.6)
 print(f, g, h)
+
+#Introducao aos valores booleanos and, or, not
+i = (2 > 3) and (5/0 > 7) #False
+# error - division by zero:  j = (5/0 > 7 ) and (2 > 3)
+print(i)
