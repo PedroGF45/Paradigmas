@@ -1,7 +1,7 @@
 #Aulas praticas de Paradigmas da Programacao
 #Que esperar das expressoes e o tipo de dado
 
-a = (3 + 4 * 5 - 2) / 7 # 3.0 - Float
+a = (3 + 4 * 5 - 2) / 7 
 atype = type(a)
 print("a=", a, atype)
 
@@ -28,3 +28,28 @@ print("f=", f, ftype)
 g = 4.25e-1 + 8e-2
 gtype = type(g)
 print("g", g, gtype)
+
+h = 9 // 4 == 7 % 5
+htype = type(h)
+print("h", h, htype)
+
+i = 8 // 2 == 8 / 2.0
+itype = type(i)
+print("i", i, itype)
+
+j = 3 > 2.0 and 7 > 8.5
+jtype = type(j)
+print("j", j, jtype)
+
+k = 3.0 != 2 or 7.5 > 8
+ktype = type(k)
+print("k", k, ktype)
+
+l = not(17 % 2 == 0 and 3 / 0 > 5)
+ltype = type(l)
+print("l", l, ltype)
+
+# m = true and False #erro
+# mtype = type(m)
+# print("m", m, mtype)
+
