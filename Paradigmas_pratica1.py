@@ -64,3 +64,12 @@ print("1 + 1 =", n) # Nao ha contas, apenas copia o que esta dentro das aspas
 
 p = eval(input("Escreva..")) # o que fica guardado no p e uma cadeia de caracteres #ver de dentro para fora
 print(p)
+
+q = 4
+q * 1.5
+print(q) # a variavel continua a ser 4 porque nao atribuimos a multiplicacao
+
+r = 3 # atribuicao de valores a variaveis
+s = r
+s = s + 1
+print("r=", r, "\ns=", s) 
