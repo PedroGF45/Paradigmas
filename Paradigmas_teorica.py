@@ -95,3 +95,22 @@ s1 = ((5, 7), (8, 9, 0), ("a", 3, "b")) # Tuple de 3 elementos
 print("tamanho e de", len(s1))
 print(s1[1][0]) # Aceder ao segundo elemento e dentro desse aceder ao primeiro elemento
 print(s1[-1][2]) # Aceder ao terceiro elemento e dentro desse aceder ao terceiro elemento
+
+# Operacoes com tuplos
+t1 = (4, 6)
+u1 = (1, 3, 0)
+print(t1 + u1)
+v1 = u1 + t1
+print (v1)
+print(t1 * 3)
+
+print(tuple("a8k"))
+
+x1 = ((9, 8), (6,), (), 7)
+print(7 in x1)
+print(() in x1)
+print(9 in x1)
+print(9 in x1[0])
+
+y1 = (5, 12, 14, 9, 0, 0)
+print(y1[1:4])
