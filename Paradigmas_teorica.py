@@ -28,3 +28,7 @@ print(f, g, h)
 k = 1 if 3 == 2 else "3 nao e igual a 2"
 l = "3 e diferente de 2" if 3 != 2 else 1
 print (k, l)
+
+a1 = 10 + 5 # Atribuicao de um nome e uma expressao
+a1 + 5.5 # Nao ha atribuicao a variavel a1
+print("a1=", a1)
