@@ -60,3 +60,21 @@ j1 = h1 #7
 h1 = i1 #15
 i1 = j1 #7
 print("h1=", h1, "i1=", i1, "j1=", j1)
+
+# Definicao de tuplos/tuples
+k1 = (5 + 10, True, 4.0 - 2.5)
+print("k1=", k1)
+
+l1 = len(()) # Como nao ha elementos, a length e zero
+print("l1=", l1)
+
+m1 = (5,9,) # Ignora o espaco vazio
+print("m1=", m1)
+
+n1 = (5)
+o1 = (5,)
+print("n1=", n1, "o1=", o1)
+print("classe do n1 e", type(n1), "classe do o1 e", type(o1)) # Em python as classes sao os tipos de dados. Para ser tuple tem de ter virgula
+
+p1 = (5, True, (5, 8, 0)) # 3 argumentos
+print("length e ", len(p1))
