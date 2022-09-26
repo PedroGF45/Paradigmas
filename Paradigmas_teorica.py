@@ -32,3 +32,9 @@ print (k, l)
 a1 = 10 + 5 # Atribuicao de um nome e uma expressao
 a1 + 5.5 # Nao ha atribuicao a variavel a1
 print("a1=", a1)
+a1 = a1 + 5.5
+print("a1 vale agora ", a1)
+b1 = a1 
+print("b1=", b1)
+a1 = 12
+print("a1=", a1, "b1=", b1)
