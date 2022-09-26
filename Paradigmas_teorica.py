@@ -38,3 +38,25 @@ b1 = a1
 print("b1=", b1)
 a1 = 12
 print("a1=", a1, "b1=", b1)
+# c1 + 5 # Erro - c is not defined
+
+#Atribuicoes multiplas
+d1 = 7
+e1 = 15
+d1, e1, = e1, d1 # Troca de variaveis
+print("d1=", d1, "e1=", e1)
+
+#Cuidado com estas atribuicoes 
+f1 = 7
+g1 = 15
+f1 = g1 #15
+g1 = f1 #15
+print("f1=", f1, "g1", g1)
+
+#Para fazer o de cima precisamos de uma outra variavel
+h1 = 7
+i1 = 15
+j1 = h1 #7
+h1 = i1 #15
+i1 = j1 #7
+print("h1=", h1, "i1=", i1, "j1=", j1)
