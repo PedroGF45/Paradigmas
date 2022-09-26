@@ -78,3 +78,20 @@ print("classe do n1 e", type(n1), "classe do o1 e", type(o1)) # Em python as cla
 
 p1 = (5, True, (5, 8, 0)) # 3 argumentos
 print("length e ", len(p1))
+
+# Indice de tuplos
+
+q1 = (50, 10, 9, 14)
+print("o terceiro elemento ou o elemento de indice 2 e o", q1[2]) # Indices comecam da esquerda para a direito no 0. Se for no sentido contrario comecamos no -1
+
+r1 = (7, 8, 0, 53, 999)
+print(r1[5-4]) # Podemos usar calculos para descobrir o indice
+# print(r1[25]) # Erro porque nao ha nenhum elemento com indice 25
+# print(r1[len(r1)]) # Erro porque nao ha nehum elemento com indice 5
+print(r1[-1]) # Quando usamos numeros negativos vemos da direita pa esquerda
+print(r1[-3])
+
+s1 = ((5, 7), (8, 9, 0), ("a", 3, "b")) # Tuple de 3 elementos
+print("tamanho e de", len(s1))
+print(s1[1][0]) # Aceder ao segundo elemento e dentro desse aceder ao primeiro elemento
+print(s1[-1][2]) # Aceder ao terceiro elemento e dentro desse aceder ao terceiro elemento
