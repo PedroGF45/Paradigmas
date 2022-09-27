@@ -50,3 +50,32 @@ def velocidadeMedia():
         
 velocidadeMedia()
 
+# Ex 6
+
+from math import log10 # from the framework math import the function log10
+
+def operations():
+    x = input("Enter a value for X: ")
+    y = input("Enter a value for Y: ")
+    
+    try:
+        x = int(x) # Check if x is an integer
+        y = int(y) # Check if y is an integer
+
+        addition = x + y
+        subtraction= x - y
+        multiplication = x * y
+        division = x / y
+        division_int = x // y
+        division_rest = x % y
+        logarithm = log10(x)
+        exponencial = x**y
+
+        print(f"{x} + {y} = {addition}\n{x} - {y} = {subtraction}\n{x} * {y} = {multiplication}\n{x} / {y} = {division}\n{x} // {y} = {division_int}\n{x} % {y} = {division_rest}\nlog10({x}) = {logarithm}\n{x}^{y} = {exponencial}")
+        
+    except ValueError:
+        print("The values that you entered are not integers")
+        operations()
+        
+operations()
+
