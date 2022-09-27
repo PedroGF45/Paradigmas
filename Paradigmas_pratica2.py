@@ -24,7 +24,29 @@ def soma_Inteiros():
         print(f"A soma de 1 a {n} e de {soma:.0f}")
     except ValueError: 
         print(f"{n} nao e um inteiro!")
-        soma_Inteiros() # se nao for integer corre a funcao novamente
+        soma_Inteiros() # if not an integer run the function again
 
 soma_Inteiros()
+
+# Ex 5
+
+def velocidadeMedia():
+    distancia = input("Enter the distance you want to run in kilometers: ")
+    time = input("Enter the time you want it to be completed in minutes: ")
+    
+    try:
+        distancia = int(distancia) # See if the value is an integer
+        time = int(time)
+
+        velocidade_kmh = distancia / (time / 60) 
+        velocidade_ms = (distancia * 1000 ) / (time * 60)
+
+        print(f"A velocidade media em km/h e de {velocidade_kmh}")
+        print(f"A velocidade media em m/s e de {velocidade_ms}")
+        
+    except ValueError:
+        print("The values that you entered are not integers")
+        velocidadeMedia() # if not an integer run the function again
+        
+velocidadeMedia()
 
