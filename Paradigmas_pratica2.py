@@ -35,8 +35,8 @@ def velocidadeMedia():
     time = input("Enter the time you want it to be completed in minutes: ")
     
     try:
-        distancia = int(distancia) # See if the value is an integer
-        time = int(time)
+        distancia = float(distancia) # See if the value is a float
+        time = float(time) # See if the value is a float
 
         velocidade_kmh = distancia / (time / 60) 
         velocidade_ms = (distancia * 1000 ) / (time * 60)
@@ -59,8 +59,8 @@ def operations():
     y = input("Enter a value for Y: ")
     
     try:
-        x = int(x) # Check if x is an integer
-        y = int(y) # Check if y is an integer
+        x = float(x) # Check if x is a float
+        y = float(y) # Check if y is a float
 
         addition = x + y
         subtraction= x - y
@@ -79,3 +79,20 @@ def operations():
         
 operations()
 
+from math import pi # from the framework math import the function pi
+
+def areaCircle():
+    radius = input("Enter a value for the radius in cm: ")
+    
+    try:
+        radius = float(radius) # Check if the input is a float. Because if the user enters 3.5, the function doesn't accept it
+
+        area_circle = pi * (radius*radius)
+
+        print(f"The area of the circle is {(area_circle):.2f} cm^2")
+        
+    except ValueError:
+        print("The values that you entered are not integers")
+        areaCircle()
+        
+areaCircle()
