@@ -28,3 +28,13 @@ print(h) # ((1, 2), (1, 2, 1, 2, 1, 2))
 
 i = tuple(x[1] for x in ((4, 5), (7,2,8), (14, 7))) # sequence (4, 5), (7,2,8), (14, 7)) result will be the second element of each subtuple
 print(i) # (5, 2, 7)
+
+j = (('Joao', 18, 9), ('Ana', 17, 12), ('Pedro', 19, 17), ('Diogo', 18, 4), ('Martim', 17, 9), ('Joana', 18, 16), ('Beatriz', 19, 15))
+nomes = tuple(j[0] for j in j)
+idades = tuple(j[1] for j in j)
+notas = tuple(j[2] for j in j)
+nomes_idades = tuple((j[0], j[1]) for j in j)
+print(nomes) # ('Joao', 'Ana', 'Pedro', 'Diogo', 'Martim', 'Joana', 'Beatriz')
+print(idades) # (18, 17, 19, 18, 17, 18, 19)
+print(notas) # (9, 12, 17, 4, 9, 16, 15)
+print(nomes_idades) # (('Joao', 18), ('Ana', 17), ('Pedro', 19), ('Diogo', 18), ('Martim', 17), ('Joana', 18), ('Beatriz', 19))
