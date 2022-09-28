@@ -38,3 +38,30 @@ print(nomes) # ('Joao', 'Ana', 'Pedro', 'Diogo', 'Martim', 'Joana', 'Beatriz')
 print(idades) # (18, 17, 19, 18, 17, 18, 19)
 print(notas) # (9, 12, 17, 4, 9, 16, 15)
 print(nomes_idades) # (('Joao', 18), ('Ana', 17), ('Pedro', 19), ('Diogo', 18), ('Martim', 17), ('Joana', 18), ('Beatriz', 19))
+
+# Strings
+
+k = 'xpto'
+print(k[0]) # 'x'
+
+l = 'ab c' 
+m = ''
+print(l) # 'ab c'
+print(m) # ''
+print(l[2]) # ''
+print(l[2] == m) # False
+print(len(l)) # 4
+print('' in l) # True
+print(l[0:2]) # 'ab'
+print('la13' + '3b') # la133b
+print('a' * 3) # 'aaa'
+
+print('4 + 7') # '4 + 7'
+
+n = str(4 + 7) # Evaluate first the expression inside ()
+print(n) # 11
+
+o = tuple(x * 2 for x in 'ab1c') # a * 2 + b * 2 + 1 * 2 + c * 1
+print(o) # ('aa', 'bb', '11', 'cc')
+
+
