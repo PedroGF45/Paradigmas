@@ -115,3 +115,7 @@ print(9 in x1[0]) # True
 y1 = (5, 12, 14, 9, 0, 0)
 print(y1[1:4]) # (12, 14, 9)
 
+z1 = (5, 15, 25, 35)
+print(z1[1:3]) # (15,25)
+print(z1[2:2]) # ()
+print(z1[:2] + (0,) + z1[3:]) # Construct a subtuple from z1 without '25' and with '0' -> (5, 15, 0, 35)
