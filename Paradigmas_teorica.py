@@ -99,18 +99,19 @@ print(s1[-1][2]) # Aceder ao terceiro elemento e dentro desse aceder ao terceiro
 # Operacoes com tuplos
 t1 = (4, 6)
 u1 = (1, 3, 0)
-print(t1 + u1)
+print(t1 + u1) # (4, 6, 1, 3, 0)
 v1 = u1 + t1
-print (v1)
-print(t1 * 3)
+print (v1) # (1, 3, 0, 4, 6)
+print(t1 * 3) # (4, 6, 4, 6, 4, 6)
 
-print(tuple("a8k"))
+print(tuple("a8k")) # ('a', '8', 'k')
 
 x1 = ((9, 8), (6,), (), 7)
-print(7 in x1)
-print(() in x1)
-print(9 in x1)
-print(9 in x1[0])
+print(7 in x1) # True
+print(() in x1) # True
+print(9 in x1) # False
+print(9 in x1[0]) # True
 
 y1 = (5, 12, 14, 9, 0, 0)
-print(y1[1:4])
+print(y1[1:4]) # (12, 14, 9)
+
