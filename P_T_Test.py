@@ -110,3 +110,10 @@ print(m1) # [('a', 'a'), ('b', 'b')]
 n1 = [1 for x in [[2, 4], [5,3]]]
 print(n1) # [1, 1]
 
+# Objects
+
+print(id(5)) # 4562043248 Every new session of Python this value will change
+print(id(4 + 1)) # 4562043248 same as before because it has the same output (5)
+print(id(5.0)) # 4612368240 different because 5.0 is a float and 5 is an integer
+
+print( 5 == 5.0) # True because operator == checks if 2 entities have the same value
