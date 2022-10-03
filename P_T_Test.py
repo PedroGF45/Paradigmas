@@ -126,4 +126,6 @@ print(p1 is o1) # True because they have the same object
 
 print(3 is o1) # False because it isn't the same object
 
+print(isinstance(5.0, int)) # False -> Checks if 5.0 is an integer 
 
+print(isinstance(5.0, (int, float))) # True -> Checks if 5.0 is ant integer or a float
