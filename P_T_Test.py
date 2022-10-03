@@ -178,3 +178,12 @@ print(x1) # [5, 7, 1]
 print(x1 == u1) # True 
 print(id(v1)) # 4628287616 Same id from u1!
 print(id(x1)) # 4628292480 Different id from u1!
+
+z1 = [10, [5, 9], 14]
+a = z1[:] # Creates a copy of array z1
+a[0] = 2 # change the character in position 0 (10) to 2
+print(z1) # [10, [5, 9], 14]
+print(a) # [2, [5, 9], 14]
+a[1][0] = 3 # Change the character in position 0 which is in position 1 (5) to 3
+print(z1) # [10, [3, 9], 14]
+print(a) # [2, [3, 9], 14]
