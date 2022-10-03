@@ -129,3 +129,43 @@ print(3 is o1) # False because it isn't the same object
 print(isinstance(5.0, int)) # False -> Checks if 5.0 is an integer 
 
 print(isinstance(5.0, (int, float))) # True -> Checks if 5.0 is ant integer or a float
+
+# Back to arrays
+
+q1 = [9, 8, 5, 4]
+print(q1) # [9, 8, 5, 4]
+q1[1] = -3 # Chanfe the value of character in position 1 to -3 
+print(q1) # [9, -3, 5, 4]
+print(id(q1)) # 4628649984 (every session it changes)
+
+r1 = q1[:1] + [-3] + q1[2:] # Creates a new array with the same characters as q1 till position 1-1=0 adds the charcter -3 and adds the character beggining in position 2
+print(r1) # [9, -3, 5, 4] same as q1
+print(id(r1)) # 4628659840 same array as q1 but the object is different
+print(r1 is q1) # as the object id is different it outputs False
+print(r1 == q1) # as the value is equal it outputs True
+
+q1[-1] = 8 # Changes the character at position -1 to 8
+print(q1) # [9, -3, 5, 8]
+
+del(q1[1]) # Delete the character at position 1 (-3)
+print(q1) # [9, 5, 8]
+
+del(q1[-2]) # Delete the character at position -2 (5)
+print(q1) # [9, 8]
+print(id(q1)) # 4628649984 same id as before!
+
+s1 = [5, 10, 20, 25, 30]
+del(s1[1:4]) # Delete characters between positions 1 and 4-1
+print(s1) # [5, 30]
+
+t1 = [5, 10, 13]
+list.append(t1, 0) # Adds character 0 to end of the list
+print(t1) # [5, 10, 13, 0]
+list.insert(t1, 0, 14) # Adds character 14 at position 0 
+print(t1) # [14, 5, 10, 13, 0]
+list.insert(t1, 5, 7) # Adds character 7 at position 5. It can be greater or equal than 5 will put in the end of the array.
+print(t1) # [14, 5, 10, 13, 0, 7]
+list.insert(t1, 3, 8) # Adds character 8 at position 3
+print(t1) # [14, 5, 10, 8, 13, 0, 7]
+
+
