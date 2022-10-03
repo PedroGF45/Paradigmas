@@ -168,4 +168,13 @@ print(t1) # [14, 5, 10, 13, 0, 7]
 list.insert(t1, 3, 8) # Adds character 8 at position 3
 print(t1) # [14, 5, 10, 8, 13, 0, 7]
 
-
+u1 = [5, 7, 1]
+print(id(u1)) # 4628287616
+v1 = u1  # Assigns the same object
+x1 = u1[:] # Assigns an object from a copy of an array
+print(u1) # [5, 7, 1]
+print(v1) # [5, 7, 1]
+print(x1) # [5, 7, 1]
+print(x1 == u1) # True 
+print(id(v1)) # 4628287616 Same id from u1!
+print(id(x1)) # 4628292480 Different id from u1!
