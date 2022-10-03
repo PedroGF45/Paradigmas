@@ -65,3 +65,48 @@ o = tuple(x * 2 for x in 'ab1c') # a * 2 + b * 2 + 1 * 2 + c * 1
 print(o) # ('aa', 'bb', '11', 'cc')
 
 
+# Arrays
+
+a1 = [] # empty array
+b1 = [5, ]
+print(a1) # []
+print(b1) # [5]
+
+c1 = [5, 'a', [2, 4.5], (9, 12)] # int, cadeia, array, tuple
+print(len(c1)) # 4
+
+d1 = [5, (7, 2), [9, 3, 4]]
+print(d1[0]) # 5
+print(d1[2][1]) # 3
+print((7, 2) in d1) # True
+
+e1 = [5] * 3 # Operations with arrays
+print(e1) # [5, 5, 5]
+
+f1 = [5, 7] + [[6, 8]]
+print(f1) # [5, 7, [6, 8]]
+
+g1 = [5, 2, 8, 9][1:3] # between positions 1 and 3-1 = 2
+print(g1) # [2, 8]
+
+h1 = list(range(2, 5)) # sequence stating in 2 and ending in 5-1 with increments of 1
+print(h1) # [2, 3, 4]
+
+i1 = list(range(20, 0, -8)) # sequence starting in 20 ending in 0-1 with increments of -8
+print(i1) # [20, 12, 4]
+
+j1 = list(z * 2 for z in '1b2') # double the cadeia and form a list
+print(j1) # ['11', 'bb', '22']
+
+k1 = [len(x) for x in ((3, 2), (5,), (7, 9, 8))] # length of each position
+print(k1) # [2, 1, 3]
+
+l1 = tuple(x[1] for x in [[2, 1], [0, 5, 4]]) # Second position of each character
+print(l1) # [1, 5]
+
+m1 = list((x, x) for x in 'ab') # form a tuple when x is a with (a,a)
+print(m1) # [('a', 'a'), ('b', 'b')]
+
+n1 = [1 for x in [[2, 4], [5,3]]]
+print(n1) # [1, 1]
+
