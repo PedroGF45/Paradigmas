@@ -45,5 +45,6 @@ print(j)
 
 # Ex 4
 
-k = tuple(x for x in range(1, 25, 2))
+k = tuple(x for x in range(1, 26, 2)) # if range(1, 25, 2) it won't output 25
 print(k)
+
