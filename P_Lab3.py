@@ -52,3 +52,17 @@ print(j) # (3, 2, 1, 4)
 k = tuple(x for x in range(1, 26, 2)) # if range(1, 25, 2) it won't output 25
 print(k) # (1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25)
 
+# Ex 5
+
+print('4 / 2 * 3') # '4 / 2 * 3' because it's a string
+print('xpto'[2:]) # 'to'
+print('xpto'[1:-1]) # 'pt' elments from index 1 and -1-1=-2
+print(len('abc xpto')) # 8
+print('xpto' * 2) # 'xptoxpto' concatenates 'xpto' to 'xpto'
+l = tuple(x * 2 for x in (4, (0,), (8, 9), 1)) # multiplicates the integers and concatenates the tuples
+print(l) # (8, (0, 0), (8, 9, 8, 9), 2)
+m = tuple(x[0] for x in ('xpto', 'abc')) # gets the first element of each element
+print(m) # ('x', 'a')
+n = tuple(str(x) for x in range (2, 20, 3)) # x gets the virtual sequence 2 5 8 11 14 17 and then puts in a string
+print(n) # ('2', '5', '8', '11', '14', '17')
+
