@@ -24,3 +24,21 @@ print(c)
 print(d)
 print(e)
 print(f)
+
+# Ex 3
+
+g = ((5, 2, 8), (9, 1), (7, ), (4, 2, 9, 8))
+g_firstE_lastE = g[0][2]
+print(g_firstE_lastE)
+g_fourthE_ThirdE = g[3][2]
+print(g_fourthE_ThirdE)
+h = (g[1],) + (g[-2],) * 3
+print(h)
+
+i = ()
+for x in range(0, len(g)): # for x getting the values from 0 to length in g tuple(4)
+    i = i + (len(g[x]),) 
+    print(i)
+
+j = tuple(len(y) for y in g) # I want the length of y for each y in tuple g
+print(j)
