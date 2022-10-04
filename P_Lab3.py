@@ -66,3 +66,17 @@ print(m) # ('x', 'a')
 n = tuple(str(x) for x in range (2, 20, 3)) # x gets the virtual sequence 2 5 8 11 14 17 and then puts in a string
 print(n) # ('2', '5', '8', '11', '14', '17')
 
+# Ex 6
+
+o = [2, 9, 1, 1, 2, 3, 4, 5, 6]
+print(o[2:5]) # [1, 1, 2]
+print(o[:4]) # [2, 9, 1, 1]
+print(o[-3:-1]) # [4, 5]
+print(o[-15:-3]) # [2, 9, 1, 1, 2, 3] python accepts -15 as the last number
+print(o[:]) # [2, 9, 1, 1, 2, 3, 4, 5, 6]
+p = o
+p[1] = 3 # Changes the the second element (9) to 3
+print(p) # [2, 3, 1, 1, 2, 3, 4, 5, 6]
+print(o) # [2, 3, 1, 1, 2, 3, 4, 5, 6] Because it is the same object!
+print(o[:len(o)-1]) # [2, 3, 1, 1, 2, 3, 4, 5] Everything unless the last element
+
