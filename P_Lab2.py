@@ -79,6 +79,8 @@ def operations():
         
 operations()
 
+# Ex 7
+
 from math import pi # from the framework math import the function pi
 
 def areaCircle():
