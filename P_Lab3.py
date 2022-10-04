@@ -80,3 +80,16 @@ print(p) # [2, 3, 1, 1, 2, 3, 4, 5, 6]
 print(o) # [2, 3, 1, 1, 2, 3, 4, 5, 6] Because it is the same object!
 print(o[:len(o)-1]) # [2, 3, 1, 1, 2, 3, 4, 5] Everything unless the last element
 
+# Ex 7
+
+q = [4, 5, 1, 2, 3, 9]
+del(q[3]) # deleted element in position 3 (2)
+print(q) # [4, 5, 1, 3, 9]
+q.append(0) # insert 0 in the last position of q
+print(q) # [4, 5, 1, 3, 9, 0]
+q.insert(2, 8) # insert in position 2, the integer 8
+print(q) # [4, 5, 8, 1, 3, 9, 0]
+q[1] = 7 # Change the element in position 1(5), to the integer 7
+print(q) # [4, 7, 8, 1, 3, 9, 0]
+r = q + [2,(5,6,7),[5],(9,)] # Concatenates 2 arrays with tuples, integers and arrays in it
+print(r) # [4, 7, 8, 1, 3, 9, 0, 2, (5, 6, 7), [5], (9,)]
