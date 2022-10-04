@@ -42,3 +42,8 @@ for x in range(0, len(g)): # for x getting the values from 0 to length in g tupl
 
 j = tuple(len(y) for y in g) # I want the length of y for each y in tuple g
 print(j)
+
+# Ex 4
+
+k = tuple(x for x in range(1, 25, 2))
+print(k)
