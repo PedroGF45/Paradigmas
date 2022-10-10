@@ -224,3 +224,21 @@ g = {'aa': 5, 'bb': 7, 'cc': 99}
 print(g['a']) # KeyError cuz there's not a key 'a'
 g['a'] = 25
 print(g) # {'aa': 5, 'bb': 7, 'cc': 99, 'a': 25}
+
+# Defining dictionaries in compreensao
+
+h = {x: x**2 for x in range(4)} # shows the value x: x squared when x is 0,1,2,3
+print(h) # {0: 0, 1: 1, 2: 4, 3: 9}
+
+i = {x: 'a' * x for x in (1, 2 ,3)}
+print(i) # {1: 'a', 2: 'aa', 3: 'aaa'}
+
+j = {'c' * a: a for a in[2, 1 ,3]}
+print(j) # {'cc': 2, 'c': 1, 'ccc': 3}
+
+pauta = {'Joao': 10, 'Marisa': 14, 'Pedro': 7}
+print(pauta)
+print([x for x in pauta]) # it iterates the keys on the dictionary
+# ['Joao', 'Marisa', 'Pedro']
+print(tuple(pauta[x] for x in pauta)) # (10,14, 7)
+print([(x, pauta[x]) for x in pauta]) # [('Joao', 10), ('Marisa', 14), ('Pedro', 7)]
