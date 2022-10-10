@@ -187,3 +187,22 @@ print(a) # [2, [5, 9], 14]
 a[1][0] = 3 # Change the character in position 0 which is in position 1 (5) to 3
 print(z1) # [10, [3, 9], 14]
 print(a) # [2, [3, 9], 14]
+
+# Dictionaries
+
+a = {} # empty dictionary
+print(len(a)) # 0
+
+b = {56 + 4: [1, 2, 3], 0: 8} # python evaluates the expressions before
+print(b) # {60: [1, 2, 3], 0: 8}
+
+c = {'a': 7, 5.3: [2] * 3} # python evaluates the expressions before
+print(c) # {'a': 7, 5.3: [2, 2, 2]}
+
+d = {'b': 5, 'a': 7, 'b': 8} # if there's a repeated key python will assign to it the last instance (8)
+print(d) # {'b': 8, 'a': 7}
+
+e = {'re': 5.4, 'im': -4.5}
+print(e) # {'re': 5.4, 'im': -4.5}
+print(e['re']) # 5.4
+print(e['re'] + e['im']) # 0.9000000000000004 
