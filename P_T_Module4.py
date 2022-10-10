@@ -225,7 +225,7 @@ print(g['a']) # KeyError cuz there's not a key 'a'
 g['a'] = 25
 print(g) # {'aa': 5, 'bb': 7, 'cc': 99, 'a': 25}
 
-# Defining dictionaries in compreensao
+# Defining dictionaries in comprehesnion
 
 h = {x: x**2 for x in range(4)} # shows the value x: x squared when x is 0,1,2,3
 print(h) # {0: 0, 1: 1, 2: 4, 3: 9}
