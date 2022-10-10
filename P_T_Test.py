@@ -206,3 +206,16 @@ e = {'re': 5.4, 'im': -4.5}
 print(e) # {'re': 5.4, 'im': -4.5}
 print(e['re']) # 5.4
 print(e['re'] + e['im']) # 0.9000000000000004 
+
+f = {'nome': 'Joao', 'nota': 17.4}
+print(f) # {'nome': 'Joao', 'nota': 17.4}
+print(f['nota']) # 17.4
+f['nota'] = 8.9 # dictionaries are mutable
+print(f) # {'nome': 'Joao', 'nota': 8.9}
+
+notas = {'PP': [{'nome': 'Ana', 'nota': 14.1},
+                {'nome': 'Joao', 'nota': 17.2}],
+        'SD':  [{'nome': 'Ana', 'nota': 12.34},
+                {'nome': 'Joao', 'nota': 18.1}]}
+notas['PP'][0]['nota'] = 17.1 # Change the 'nota' of 'Ana to 17.1
+print(notas) # {'PP': [{'nome': 'Ana', 'nota': 17.1}, {'nome': 'Joao', 'nota': 17.2}], 'SD': [{'nome': 'Ana', 'nota': 12.34}, {'nome': 'Joao', 'nota': 18.1}]}
