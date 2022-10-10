@@ -219,3 +219,8 @@ notas = {'PP': [{'nome': 'Ana', 'nota': 14.1},
                 {'nome': 'Joao', 'nota': 18.1}]}
 notas['PP'][0]['nota'] = 17.1 # Change the 'nota' of 'Ana to 17.1
 print(notas) # {'PP': [{'nome': 'Ana', 'nota': 17.1}, {'nome': 'Joao', 'nota': 17.2}], 'SD': [{'nome': 'Ana', 'nota': 12.34}, {'nome': 'Joao', 'nota': 18.1}]}
+
+g = {'aa': 5, 'bb': 7, 'cc': 99}
+print(g['a']) # KeyError cuz there's not a key 'a'
+g['a'] = 25
+print(g) # {'aa': 5, 'bb': 7, 'cc': 99, 'a': 25}
