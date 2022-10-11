@@ -110,3 +110,21 @@ del(a['a']) # delete element from key 'a'
 print(a) # {1: [4], 3: [4, 7]}
 a['b'] = 2 # adds a key 'b' and value
 print(a) # {1: [4], 3: [4, 7]}
+
+# Ex 10
+
+cal = [{'nome': 'Vera', 'nota': 1}, 
+        {'nome': 'Maria', 'nota': 17}, 
+        {'nome': 'Catia', 'nota': 8}]
+print(cal[1]['nome']) # 'Maria'
+print(cal[-1]['nota']) # 8
+
+# Ex 11
+
+temp = {'arquipelagos': [{'local': 'Madeira', 'min': 13.3, 'max': 27.8},
+                        {'local': 'Acores', 'min': 9.1, 'max': 25.5}],
+        'continente': [{'local': 'Lisboa', 'min': 5.1, 'max': 40.8},
+                        {'local': 'Porto', 'min': -1.2, 'max': 36.0},
+                        {'local': 'Algarve', 'min': 11.6, 'max': 43.3}]}
+print([x['min'] for x in temp['arquipelagos']]) # [13.3, 9.1]
+print([temp['continente'][1]['min'],temp['continente'][1]['max']]) # [-1.2, 36.0]
