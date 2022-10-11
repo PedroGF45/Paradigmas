@@ -3,9 +3,6 @@
 
 # Ex 1
 
-from pickle import APPEND
-
-
 a = (4, (2, 0, 7), (8, 9), 1, (5, ), (2, 1))
 print(a + (2,0))
 print(len(a))
