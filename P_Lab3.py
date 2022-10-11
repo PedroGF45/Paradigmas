@@ -3,6 +3,9 @@
 
 # Ex 1
 
+from pickle import APPEND
+
+
 a = (4, (2, 0, 7), (8, 9), 1, (5, ), (2, 1))
 print(a + (2,0))
 print(len(a))
@@ -98,3 +101,15 @@ print(r) # [4, 7, 8, 1, 3, 9, 0, 2, (5, 6, 7), [5], (9,)]
 
 s = [[x*x for x in range(1,26)],[y for y in range(100, 201, 2)]] # square x when x is in virtual sequence from 1-25 and y when y is in virtual sequence from 100-200 with increment of 2
 print(s) # [[1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625], [100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200]]
+
+# Ex 9
+
+a = {1: [4], 'a': [5], 3: [4, 7]}
+a['a'].append(8) # add 8 to the value [5] from the key 'a'
+# or a['a'] = a['a'] + [8]
+# or a['a'] = [5, 8]
+print(a) # {1: [4], 'a': [5, 8], 3: [4, 7]}
+del(a['a']) # delete element from key 'a'
+print(a) # {1: [4], 3: [4, 7]}
+a['b'] = 2 # adds a key 'b' and value
+print(a) # {1: [4], 3: [4, 7]}
