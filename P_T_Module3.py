@@ -49,3 +49,11 @@ def h(x):
 h(1) # 8
 h(-1) # -5
 h(30) # 900
+
+# Example of finding a max number given 2 numbers
+def maximo(x, y):
+    if x < y:
+        return y
+    else:
+        return x
+maximo(2, 4) # 4
