@@ -1,5 +1,4 @@
 # Alternative Composition
-
 a = 7
 if a > 5: # True
 # print(2 * a) # Indentation error: expected idented block 
@@ -18,7 +17,6 @@ else: # Then True
     print(c) # 32
 
 # Functions
-
 def cubo(x):
     x = x ** 3 
     print(x)
@@ -40,6 +38,7 @@ f(2) # 8
 def f_alternative(x):
     return x ** 2 if x < 0 else x ** 3
 
+# Function with 3 branches
 def h(x):
     if x < 0:
         return -5
