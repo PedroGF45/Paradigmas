@@ -34,3 +34,8 @@ def f(x): # defining functions by branches
 f(-1) # 1
 f(0) # 0
 f(2) # 8
+
+# or
+
+def f_alternative(x):
+    return x ** 2 if x < 0 else x ** 3
