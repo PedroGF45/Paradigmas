@@ -81,3 +81,13 @@ studentsGrades = [{'nome': 'antonio', 'nota': 10},
 def la(list):
     return tuple(x['nome'] for x in studentsGrades) # when x is each element of the dictionary / take the value of the key 'nome'
 la(studentsGrades) # ('antonio', 'maria', 'felisberta')
+
+# Define a function 'la' which creates a tuple with only the grades of each student
+studentsGrades = [('Ana', 14), ('Joao', 7), ('Jose', 18)]
+def la(list):
+    return tuple(x[1] for x in list)
+la(studentsGrades) # (14, 7, 18)
+# Define a function which creates a list of dictionaries of the form [{'nome': x, 'nota': y}]
+def generateDict(list):
+    return [{'nome': x[0], 'nota': x[1]} for x in list]
+generateDict(studentsGrades) # [{'nome': 'Ana', 'nota': 14}, {'nome': 'Joao', 'nota': 7}, {'nome': 'Jose', 'nota': 18}]
