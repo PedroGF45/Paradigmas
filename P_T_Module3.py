@@ -17,3 +17,20 @@ else: # Then True
     c = 2 * c
     print(c) # 32
 
+# Functions
+
+def cubo(x):
+    x = x ** 3 
+    print(x)
+cubo(2) # 8
+cubo(5-2) # 27
+
+def f(x): # defining functions by branches
+    if x < 0:
+        x = x ** 2
+        print(x)
+    else:
+        cubo(x) # calling function cubo with return x ** 3
+f(-1) # 1
+f(0) # 0
+f(2) # 8
