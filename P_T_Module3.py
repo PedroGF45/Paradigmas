@@ -57,3 +57,8 @@ def maximo(x, y):
     else:
         return x
 maximo(2, 4) # 4
+
+# Some functions might be in our interested to have no arguments (when we want constants)
+def c():
+    return 20
+c() # invoking integer with value 20
