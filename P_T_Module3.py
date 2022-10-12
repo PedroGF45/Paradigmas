@@ -70,5 +70,5 @@ c() # invoking integer with value 20
 # of elements of each of the tuples
 a = [(5, 4, 2), ((3, 4), 8), (5,), (), (7, 8, (9, 5))]
 def countElements(lista):
-    return [len(x) for x in lista]
+    return [len(x) for x in lista] # when x is each element of the list - take the lenght of that element and form a list
 countElements(a) # [3, 2, 1, 0, 3]
