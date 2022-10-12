@@ -1,4 +1,7 @@
 # Alternative Composition
+from itertools import count
+
+
 a = 7
 if a > 5: # True
 # print(2 * a) # Indentation error: expected idented block 
@@ -62,3 +65,10 @@ maximo(2, 4) # 4
 def c():
     return 20
 c() # invoking integer with value 20
+
+# Defining a function C which receiving a list with tuples will return a list with the number
+# of elements of each of the tuples
+a = [(5, 4, 2), ((3, 4), 8), (5,), (), (7, 8, (9, 5))]
+def countElements(lista):
+    return [len(x) for x in lista]
+countElements(a) # [3, 2, 1, 0, 3]
