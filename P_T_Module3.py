@@ -72,3 +72,12 @@ a = [(5, 4, 2), ((3, 4), 8), (5,), (), (7, 8, (9, 5))]
 def countElements(lista):
     return [len(x) for x in lista] # when x is each element of the list - take the lenght of that element and form a list
 countElements(a) # [3, 2, 1, 0, 3]
+
+# Define a function 'la' of which receiving a sheet from a subject returns a tuple with the names of the
+# students on the sheet
+studentsGrades = [{'nome': 'antonio', 'nota': 10},
+                {'nome': 'maria', 'nota': 17},
+                {'nome': 'felisberta', 'nota': 1}]
+def la(list):
+    return tuple(x['nome'] for x in studentsGrades) # when x is each element of the dictionary / take the value of the key 'nome'
+la(studentsGrades) # ('antonio', 'maria', 'felisberta')
