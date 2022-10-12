@@ -39,3 +39,14 @@ f(2) # 8
 
 def f_alternative(x):
     return x ** 2 if x < 0 else x ** 3
+
+def h(x):
+    if x < 0:
+        return -5
+    elif x >= 20:
+        return x ** 2
+    else:
+        return x + 7
+h(1) # 8
+h(-1) # -5
+h(30) # 900
