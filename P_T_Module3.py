@@ -131,3 +131,19 @@ def g(x):
     print(x[0]) # 3
 g(a)
 print(a) # [3, 9]
+
+# we can use a external name when defining a function
+b = 30
+def t(k):
+    return k * b
+t(3) # 90
+print(b) # 30
+def y(k):
+    b = k * b # we cannot assign to a variable previously assigned
+    return b 
+y(3) # local variable 'b' referenced before assignment
+def u(k):
+    global b # we are saying that b is a global variable and now we can assign it again
+    b = k * b 
+    return b
+u(3) # 90
