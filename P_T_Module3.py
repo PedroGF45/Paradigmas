@@ -87,7 +87,14 @@ studentsGrades = [('Ana', 14), ('Joao', 7), ('Jose', 18)]
 def la(list):
     return tuple(x[1] for x in list)
 la(studentsGrades) # (14, 7, 18)
+
 # Define a function which creates a list of dictionaries of the form [{'nome': x, 'nota': y}]
 def generateDict(list):
     return [{'nome': x[0], 'nota': x[1]} for x in list]
 generateDict(studentsGrades) # [{'nome': 'Ana', 'nota': 14}, {'nome': 'Joao', 'nota': 7}, {'nome': 'Jose', 'nota': 18}]
+
+# Define a function f which receiving a sheet, returns a diciontary in the form {'name': 'apr'/'repr'}
+studentsGrades = [('Joao', 10), ('Mario', 4), ('Ana', 18)]
+def f(sheet):
+    return {x[0]: ('apr' if x[1] >= 10 else 'rep') for x in sheet}
+f(studentsGrades)
