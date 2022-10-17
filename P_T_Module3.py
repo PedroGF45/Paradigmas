@@ -108,3 +108,13 @@ ni = ((['Art','EI','Ges'],[14, 78, 55], [3, 1, 0]))
 def f(w):
     return {w[0][i]: w[1][i] + w[2][i] for i in range(len(w[0]))} # {'Art': 17, 'EI': 79, 'Ges': 55}
 f(ni)
+
+# Scope of functions
+b = 5
+c = 7
+def f(b):
+    b = b - 2
+    c = b * 3
+    print('O valor de b dentro da funcao e: ', b) # 6
+f(8)
+print('O valor de b fora da funcao e:', b) # 5
