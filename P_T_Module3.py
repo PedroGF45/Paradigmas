@@ -118,3 +118,16 @@ def f(b):
     print('O valor de b dentro da funcao e: ', b) # 6
 f(8)
 print('O valor de b fora da funcao e:', b) # 5
+
+# mutable objects in scopes
+a = [8, 9]
+def f(x):
+    x = [3] + x # 
+    print(x[0]) # 3
+f(a) 
+print(a) # [8, 9]
+def g(x):
+    x[0] = 3 # As the list is mutable, it changes a
+    print(x[0]) # 3
+g(a)
+print(a) # [3, 9]
