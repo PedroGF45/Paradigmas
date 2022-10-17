@@ -1,6 +1,4 @@
 # Alternative Composition
-from itertools import count
-
 
 a = 7
 if a > 5: # True
