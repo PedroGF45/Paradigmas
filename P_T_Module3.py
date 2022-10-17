@@ -98,3 +98,13 @@ studentsGrades = [('Joao', 10), ('Mario', 4), ('Ana', 18)]
 def f(sheet):
     return {x[0]: ('apr' if x[1] >= 10 else 'rep') for x in sheet}
 f(studentsGrades)
+
+ni = (['Art','EI','Ges'],[14, 78, 55], [3, 1, 0]) # same length
+def f(cursos, fase1, fase2): # nao consegue aceder porque ni nao tem 3 argumentos?ß
+    return {cursos[i]: fase1[i] + fase2[i] for i in range(len(cursos))}
+f(ni)
+
+ni = ((['Art','EI','Ges'],[14, 78, 55], [3, 1, 0]))
+def f(w):
+    return {w[0][i]: w[1][i] + w[2][i] for i in range(len(w[0]))} # {'Art': 17, 'EI': 79, 'Ges': 55}
+f(ni)
