@@ -56,3 +56,8 @@ f(notas) # [('Joao', 12), ('Maria', 14), ('Jose', 12)]
 def h(w):
     return {i[0]: 'apr' if max(i[1]) > 12 else 'rep' for i in w}
 h(notas) # {'Joao': 'rep', 'Maria': 'apr', 'Jose': 'rep'}
+
+a = {'PP': [['Joao',(10,12)],['Maria',(9,14)]],'Calculo': [['Cátia',(8,10)],[ 'Maria',(15,14)],['Vera',(10,7)]]}
+def g(w, d):
+    return tuple(w[d][i][1][1] for i in range(len(d)))
+g(a, 'PP') # (12, 14)
