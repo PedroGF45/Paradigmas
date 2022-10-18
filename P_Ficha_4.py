@@ -61,3 +61,11 @@ a = {'PP': [['Joao',(10,12)],['Maria',(9,14)]],'Calculo': [['Cátia',(8,10)],[ '
 def g(w, d):
     return tuple(w[d][i][1][1] for i in range(len(d)))
 g(a, 'PP') # (12, 14)
+
+#Ex 5
+v1 = ['Joao','Maria','Jose']
+v2 = [17,15,8]
+
+def c(w1, w2):
+    return {w1[i]: w2[i] for i in range(len(v1))}
+c(v1, v2) # {'Joao':17, 'Maria':15, 'Jose':8}
