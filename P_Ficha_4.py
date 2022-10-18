@@ -52,3 +52,7 @@ notas = [['Joao',(10,12)],['Maria',(9,14)],['Jose',(12,7)]]
 def f(w):
     return [(x[0], max(x[1])) for x in w]
 f(notas) # [('Joao', 12), ('Maria', 14), ('Jose', 12)]
+
+def h(w):
+    return {i[0]: 'apr' if max(i[1]) > 12 else 'rep' for i in w}
+h(notas) # {'Joao': 'rep', 'Maria': 'apr', 'Jose': 'rep'}
