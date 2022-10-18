@@ -41,3 +41,7 @@ def existQ(w, x):
     else:
         return False
 existQ(r, 12) # True
+
+def amplitude_termica(w):
+    return {i: (max(w[i]) - min(w[i])) for i in w}
+amplitude_termica(r)
