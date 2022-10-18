@@ -45,3 +45,10 @@ existQ(r, 12) # True
 def amplitude_termica(w):
     return {i: (max(w[i]) - min(w[i])) for i in w}
 amplitude_termica(r)
+
+# Ex 4
+notas = [['Joao',(10,12)],['Maria',(9,14)],['Jose',(12,7)]]
+
+def f(w):
+    return [(x[0], max(x[1])) for x in w]
+f(notas) # [('Joao', 12), ('Maria', 14), ('Jose', 12)]
