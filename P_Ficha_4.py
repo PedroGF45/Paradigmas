@@ -22,6 +22,11 @@ soma(a, b) # [4, 7, 9, 12, 10, 12]
 r = {'Funchal': [23,22,24,25,21,22,22],
     'Lisboa': [15,16,18,18,17,19,15],
     'Porto': [12,15,18,14,10,12,14]}
+
 def quarta(w):
     return {x: w[x][2] for x in w}
 quarta(r) # {'Funchal': 24, 'Lisboa': 18, 'Porto': 18}
+
+def weekend(w):
+    return [(w[x][-2], w[x][-1]) for x in w]
+weekend(r) # [(22, 22), (19, 15), (12, 14)]
