@@ -30,3 +30,10 @@ quarta(r) # {'Funchal': 24, 'Lisboa': 18, 'Porto': 18}
 def weekend(w):
     return [(w[x][-2], w[x][-1]) for x in w]
 weekend(r) # [(22, 22), (19, 15), (12, 14)]
+
+def existQ(w, x):
+    if x in [w[i][-2] for i in w]:
+        return True
+    else:
+        return False
+existQ(r, 12) # True
