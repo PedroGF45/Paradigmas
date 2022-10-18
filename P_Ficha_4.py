@@ -59,8 +59,8 @@ h(notas) # {'Joao': 'rep', 'Maria': 'apr', 'Jose': 'rep'}
 
 a = {'PP': [['Joao',(10,12)],['Maria',(9,14)]],'Calculo': [['Cátia',(8,10)],[ 'Maria',(15,14)],['Vera',(10,7)]]}
 def g(w, d):
-    return tuple(w[d][i][1][1] for i in range(len(d)))
-g(a, 'PP') # (12, 14)
+    return tuple(w[d][i][1][1] for i in range(len(w[d])))
+g(a, 'Calculo') # (12, 14)
 
 #Ex 5
 v1 = ['Joao','Maria','Jose']
