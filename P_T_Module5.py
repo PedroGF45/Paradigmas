@@ -27,5 +27,12 @@ def comp(w):
     if w == []:
         return 0
     else:
-        return (1 + comp(w[:-1])) # using recursive to calculate the list with less one element
+        return 1 + comp(w[:-1]) # using recursive to calculate the list with less one element
+comp([0, 3, 4, 5, 6, 7]) # 6
+# defining the same function but using recursin from the left to right
+def comp(w):
+    if w == []:
+        return 0
+    else:
+        return 1 + comp(w[1:]) # using recursion from left ro right
 comp([0, 3, 4, 5, 6, 7]) # 6
