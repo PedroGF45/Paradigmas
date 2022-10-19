@@ -36,3 +36,23 @@ def comp(w):
     else:
         return 1 + comp(w[1:]) # using recursion from left ro right
 comp([0, 3, 4, 5, 6, 7]) # 6
+
+# Example of definig the square of the elements in a tuple
+# In comprehension:
+def qt(t):
+    return tuple(i * i for i in t)
+qt((3, -1, 4)) # (9, 1, 16)
+# Using recursion from left to right
+def qt(t):
+    if t == ():
+        return ()
+    else:
+        return ((t[0] * t[0], ) + qt(t[1:]))
+qt((3, -1, 4)) # (9, 1, 16)
+# Using recursion from right to left
+def qt(t):
+    if t == ():
+        return ()
+    else:
+        return (qt(t[:-1]) + (t[-1] ** 2, ))
+qt((3, -1, 4)) # (9, 1, 16)
