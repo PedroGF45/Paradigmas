@@ -56,3 +56,8 @@ def qt(t):
     else:
         return (qt(t[:-1]) + (t[-1] ** 2, ))
 qt((3, -1, 4)) # (9, 1, 16)
+
+def ocorreQ(x, w):
+    if w == []:
+        return False
+    else x == w[0] or ocorreQ(x, w[1:0])
