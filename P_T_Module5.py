@@ -21,3 +21,11 @@ def pot(x, n):
     else:
         return x * pot(x, n - 1) # recursive
 pot(4, 3) # 64
+
+# Example of defining the len function
+def comp(w):
+    if w == []:
+        return 0
+    else:
+        return (1 + comp(w[:-1])) # using recursive to calculate the list with less one element
+comp([0, 3, 4, 5, 6, 7]) # 6
