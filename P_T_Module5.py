@@ -51,7 +51,7 @@ def qt(t):
 qt((3, -1, 4)) # (9, 1, 16)
 # Using recursion from right to left
 def qt(t):
-    if t == ():
+    if len(t) == 0: # can use function len to see if the tuple is empty
         return ()
     else:
         return (qt(t[:-1]) + (t[-1] ** 2, ))
