@@ -97,3 +97,16 @@ def maior_nota(p):
     else:
         return maior_nota(p[1:])
 maior_nota(a) # 14
+#or more efficiently but not a recursion
+def maior_nota_option(p):
+    if len(p) == 0:
+        return 'Pauta vazia'
+    elif len(p) == 1:
+        return p[0][1]
+    else:
+        x = maior_nota_option(p[1:]) # assign the recursion to a variable. It will only calculate the recursion one time instead of two
+        if p[0][1] > x:
+            return p[0][1]
+        else:
+            return x
+maior_nota_option(a) # 14
