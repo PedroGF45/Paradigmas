@@ -142,7 +142,7 @@ d = [2, 3, 4]
 e = [a, b, 1]
 
 # Define a function to check if a list is a sub part of other list
-def subQ(w, v):
+def subQ(w, v): # is v a sub part of w
     if len(v) == 0:
         return True
     elif v[0] in w:
@@ -153,3 +153,33 @@ subQ(a, b) # True
 subQ(a, c) # True
 subQ(a, d) # True
 subQ(a, e) # False
+
+
+a = []
+b = [5, 6]
+c = [5]
+d = [5, 6, 7]
+e = [5, 4, 6, 7]
+
+# Define a function to check if a list makes inicial part of another list
+def ipQ(w, v): # is w initial part of v
+    if w == []:
+        return True # empty list is initial part of every list
+    elif v == []:
+        return False
+    elif w[0] == v[0]:
+        return ipQ(w[1:], v[1:])
+    else:
+        return False
+ipQ(a, b) # True
+ipQ(c, a) # False
+ipQ(b, d) # True
+ipQ(b, e) # False
+#or more efficient
+def ipQ(w, v): # is w initial part of v
+    if w == []:
+        return True # empty list is initial part of every list
+    elif v == []:
+        return False
+    else:
+        return w[0] == v[0] and ipQ(w[1:], v[1:])
