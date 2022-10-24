@@ -76,7 +76,7 @@ def na(p):
             return na(p[1:])
 na(a) # 3
 
-# Define a function which returns the name of approved students
+# Define a function which returns a list with the name of approved students
 def la(p):
     if len(p) == 0:
         return []
@@ -119,3 +119,13 @@ def maior_nota_recursion(p):
     else:
         return max(p[0][1], maior_nota_recursion(p[1:])) # use the max function
 maior_nota_recursion(a) # 14
+
+# Define a function which sees if all students are approved
+def approvedQ(p):
+    if len(p) == 0:
+        return True # Is there any repproved in an empty list? No, then it's True
+    elif p[0][1] >= 10 and approvedQ(p[1:]):
+        return True
+    else:
+        return False
+approvedQ(a) # False
