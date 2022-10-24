@@ -85,3 +85,15 @@ def la(p):
     else:
         return la(p[1:])
 la(a) # ['Ana', 'Antonio', 'Joao']
+
+# Define a function 'maior_nota' which return the biggest grade on the provided sheet
+def maior_nota(p):
+    if len(p) == 0:
+        return 'Pauta vazia'
+    elif len(p) == 1:
+        return p[0][1]
+    elif p[0][1] > maior_nota(p[1:]):
+        return p[0][1]
+    else:
+        return maior_nota(p[1:])
+maior_nota(a) # 14
