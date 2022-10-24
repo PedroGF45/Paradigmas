@@ -62,3 +62,15 @@ def ocorreQ(x, w):
         return False
     else: 
         return x == w[0] or ocorreQ(x, w[1:0])
+
+a = [('Ana', 12), ('Antonio', 14), ('Joao', 10), ('Maria', 7)]
+# Define a function which returns the number of approved students when the grade is >=10
+def na(p):
+    if p == []:
+        return 0
+    else:
+        if p[0][1] >= 10:
+            return 1 + na(p[1:])
+        else:
+            return na(p[1:])
+na(a) # 3
