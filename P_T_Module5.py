@@ -65,6 +65,7 @@ def ocorreQ(x, w):
 
 a = [('Ana', 12), ('Antonio', 14), ('Joao', 10), ('Maria', 7)]
 
+# Counting functinos
 # Define a function which returns the number of approved students when the grade is >=10
 def na(p):
     if p == []:
@@ -76,6 +77,7 @@ def na(p):
             return na(p[1:])
 na(a) # 3
 
+# Return lists, tuples, dictionaries
 # Define a function which returns a list with the name of approved students
 def la(p):
     if len(p) == 0:
@@ -86,6 +88,7 @@ def la(p):
         return la(p[1:])
 la(a) # ['Ana', 'Antonio', 'Joao']
 
+# Bigger or equal or minor
 # Define a function 'maior_nota' which return the biggest grade on the provided sheet
 def maior_nota(p):
     if len(p) == 0:
@@ -120,6 +123,7 @@ def maior_nota_recursion(p):
         return max(p[0][1], maior_nota_recursion(p[1:])) # use the max function
 maior_nota_recursion(a) # 14
 
+# Check conditions
 # Define a function which sees if all students are approved
 def approvedQ(p):
     if len(p) == 0:
