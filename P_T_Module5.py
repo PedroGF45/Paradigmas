@@ -133,3 +133,23 @@ def approvedQ(p):
     else:
         return False
 approvedQ(a) # False
+
+
+a = [1, 2, 3, 4, 5, (1, 2), -1]
+b = (1, 2)
+c = [3, -1]
+d = [2, 3, 4]
+e = [a, b, 1]
+
+# Define a function to check if a list is a sub part of other list
+def subQ(w, v):
+    if len(v) == 0:
+        return True
+    elif v[0] in w:
+        return subQ(w, v[1:])
+    else:
+        return False
+subQ(a, b) # True
+subQ(a, c) # True
+subQ(a, d) # True
+subQ(a, e) # False
