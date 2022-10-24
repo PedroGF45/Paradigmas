@@ -64,6 +64,7 @@ def ocorreQ(x, w):
         return x == w[0] or ocorreQ(x, w[1:0])
 
 a = [('Ana', 12), ('Antonio', 14), ('Joao', 10), ('Maria', 7)]
+
 # Define a function which returns the number of approved students when the grade is >=10
 def na(p):
     if p == []:
@@ -74,3 +75,13 @@ def na(p):
         else:
             return na(p[1:])
 na(a) # 3
+
+# Define a function which returns the name of approved students
+def la(p):
+    if len(p) == 0:
+        return []
+    elif p[0][1] >= 10:
+        return [p[0][0]] + la(p[1:])
+    else:
+        return la(p[1:])
+la(a) # ['Ana', 'Antonio', 'Joao']
