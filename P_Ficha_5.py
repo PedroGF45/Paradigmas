@@ -61,3 +61,28 @@ def nomes(w):
     else:
         return [w[0][0]] + nomes(w[1:])
 nomes(a) # ['Joao', 'Maria', 'Jose']
+
+# Ex 7
+a = [['Calculo', ['Cátia','Maria','Vera']], ['PP', ['Joao','Maria']]]
+def inscritos(w):
+    if w == []:
+        return []
+    else:
+        return [len(w[0][1])] + inscritos(w[1:])
+inscritos(a) # [3, 2]
+
+# Ex 8
+r = [('Funchal', [23, 22, 24, 25, 21, 22, 22]), ('Lisboa', [15, 16, 18, 18, 17, 19, 15]), ('Porto', [12, 15, 18, 14, 10, 12, 14])]
+def existeQ(w, c, t):
+    if w == []:
+        return False
+    if c == w[0][0]:
+        if t == w[0][1][-2]:
+            return True
+        else:
+            return False
+    else:
+        return existeQ(w[1:], c, t)
+existeQ(r, '', 21) # False
+existeQ(r, 'Funchal', 21) # False
+existeQ(r, 'Lisboa', 19) # True
