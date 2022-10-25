@@ -16,6 +16,7 @@ def invert(w):
         return [] # must return an empty list
     else:
         return [w[-1]] + invert(w[:-1])
+        # or return invert(w[1:]) + [w[o]]
 invert(a) # [87, 75, 79, 64]
 
 # Ex 3
