@@ -31,3 +31,14 @@ def count_even(w):
     else:
        return count_even(w[1:])
 count_even(a) # 3
+
+# Ex 4
+a = (0, 23, 46, 88, 95)
+def t_even(w):
+    if w == ():
+        return ()
+    elif w[0] % 2 == 0:
+        return (w[0],) + t_even(w[1:])
+    else:
+       return t_even(w[1:])
+t_even(a) # (0, 46, 88)
