@@ -77,7 +77,7 @@ r = [('Funchal', [23, 22, 24, 25, 21, 22, 22]), ('Lisboa', [15, 16, 18, 18, 17, 
 def existeQ(w, c, t):
     if w == []:
         return False
-    if c == w[0][0]:
+    elif c == w[0][0]:
         if t == w[0][1][-2]:
             return True
         else:
@@ -87,3 +87,14 @@ def existeQ(w, c, t):
 existeQ(r, '', 21) # False
 existeQ(r, 'Funchal', 21) # False
 existeQ(r, 'Lisboa', 19) # True
+
+
+r = [('Funchal', [23, 22, 24, 25, 21, 22, 22]), ('Lisboa', [15, 16, 18, 18, 17, 19, 15]), ('Porto', [12, 15, 18, 14, 10, 12, 14])]
+def filtra(w, t):
+    if w == []:
+        return []
+    elif ((w[0][1][-1] + w[0][1][-2]) / 2) >= t:
+        return [w[0][0]] + filtra(w[1:], t)
+    else:
+        return filtra(w[1:], t)
+filtra(r, 15.5) # ['Funchal', 'Lisboa']
