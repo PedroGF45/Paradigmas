@@ -1,9 +1,6 @@
 # Defining recursive functions
 
 # Ex 1
-from tkinter import W
-
-
 a = [64, 79, 75, 87]
 def soma(w):
     if w == []:
@@ -55,3 +52,12 @@ def tem_repetidos(w):
         return False
 tem_repetidos(a) # True
 tem_repetidos(b) # False
+
+# Ex 6
+a = [['Joao',10],['Maria',9],['Jose',12]]
+def nomes(w):
+    if w == []:
+        return []
+    else:
+        return [w[0][0]] + nomes(w[1:])
+nomes(a) # ['Joao', 'Maria', 'Jose']
