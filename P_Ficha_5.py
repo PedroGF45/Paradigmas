@@ -46,8 +46,12 @@ a = [0, 23, 46, 88, 0, 95, 46]
 b = [0, 1, 2, 3]
 def tem_repetidos(w):
     if len(w) == 0:
+        return False
+    if w[0] == w[1]:
         return True
-    elif w[0] in w[1:]:
+    if tem_repetidos([w[0]] + w[2:]):
+        return True
+    if tem_repetidos(w[1:]):
         return True
     else:
         return False
