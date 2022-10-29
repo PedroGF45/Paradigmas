@@ -103,6 +103,17 @@ def filtra(w, t):
         return filtra(w[1:], t)
 filtra(r, 15.5) # ['Funchal', 'Lisboa']
 
+# Ex 9
+def maxima(w):
+    if w == []:
+        return 0
+    elif w[0] > maxima(w[1:]):
+        return w[0]
+    else:
+        return maxima(w[1:]) 
+a = [23, 22, 24, 25, 21, 22, 22]
+maxima(a)
+
 # Ex 11
 def filtra_numeros(w):
     def filtra_numeros_aux(r, x):
