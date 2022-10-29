@@ -159,7 +159,7 @@ a = [0, -1, 2, -4, 4, 5, 6, -10]
 filtra_numeros(a) # [-1, -4, -10]
 
 # Ex 13
-# Using soma from exercise 1
+# Using soma() from exercise 1
 def soma(r, x):
     if x == []:
         return r
@@ -175,7 +175,7 @@ a = [[2,0,7],[3,3],[8,5,1]]
 soma_listas(a) # [9, 16, 14]
 
 # Ex 14
-# Using soma from exercise 1
+# Using soma() from exercise 1
 def soma(i, r, x):
     if i >= len(x):
         return r
