@@ -102,3 +102,17 @@ def filtra(w, t):
     else:
         return filtra(w[1:], t)
 filtra(r, 15.5) # ['Funchal', 'Lisboa']
+
+# Ex 11
+def filtra_numeros(w):
+    def filtra_numeros_aux(r, x):
+        if x == []:
+            return r
+        elif x[0] < 0:
+            return filtra_numeros_aux (r + [x[0]], x[1:])
+        else:
+            return filtra_numeros_aux(r, x[1:])
+    return filtra_numeros_aux([], w)
+ 
+a = [0, -1, 2, -4, 4, 5, 6, -10]
+filtra_numeros(a)
