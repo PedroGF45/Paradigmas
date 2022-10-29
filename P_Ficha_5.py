@@ -112,14 +112,14 @@ def maxima(w):
     else:
         return maxima(w[1:]) 
 a = [23, 22, 24, 25, 21, 22, 22]
-maxima(a)
+maxima(a) # 25
 
 # Ex 10
 def sublistas(w):
     if w == []:
         return 0
     elif isinstance(w[0], list):
-        return 1 + sublistas(w[1:]) + sublistas(w[0])
+        return 1 + sublistas(w[1:]) + sublistas(w[0]) # check also sublists on the first element
     else:
         return sublistas(w[1:])
 a = [[1], 2, [3]]
@@ -142,7 +142,7 @@ def filtra_numeros(w):
     return filtra_numeros_aux([], w)
  
 a = [0, -1, 2, -4, 4, 5, 6, -10]
-filtra_numeros(a)
+filtra_numeros(a) # [-1, -4, -10]
 
 # Ex 12
 def filtra_numeros(w):
@@ -156,4 +156,4 @@ def filtra_numeros(w):
     return filtra_numeros_aux(0, [], w)
  
 a = [0, -1, 2, -4, 4, 5, 6, -10]
-filtra_numeros(a)
+filtra_numeros(a) # [-1, -4, -10]
