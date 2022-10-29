@@ -160,32 +160,39 @@ filtra_numeros(a) # [-1, -4, -10]
 
 # Ex 13
 # Using soma() from exercise 1
-def soma(r, x):
-    if x == []:
-        return r
+def soma(w):
+    if w == []:
+        return 0
     else:
-        return soma(r + x[0], x[1:])
+        return w[0] + soma(w[1:])
 
 def soma_listas(w):
-    if w == []:
-        return []
-    else:
-        return [soma(0, w[0])] + soma_listas(w[1:])
+    def soma_listas_aux(r, x):
+        if x == []:
+            return r
+        else:
+            return soma_listas_aux(r + [soma(x[0])], x[1:])
+    return soma_listas_aux([], w)
+
 a = [[2,0,7],[3,3],[8,5,1]]
 soma_listas(a) # [9, 16, 14]
 
 # Ex 14
 # Using soma() from exercise 1
-def soma(i, r, x):
-    if i >= len(x):
-        return r
+
+def soma(w):
+    if w == []:
+        return 0
     else:
-        return soma(i+1, r + x[i], x)
+        return w[0] + soma(w[1:])
 
 def soma_listas(w):
-    if w == []:
-        return []
-    else:
-        return [soma(0, 0, w[0])] + soma_listas(w[1:])
+    def soma_listas_aux(i, r, x):
+        if i >= len(x):
+            return r
+        else:
+            return soma_listas_aux(i + 1, r + [soma(x[i])], x)
+    return soma_listas_aux(0, [], w)
+
 a = [[2,0,7],[3,3],[8,5,1]]
 soma_listas(a) # [9, 16, 14]
