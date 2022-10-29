@@ -114,6 +114,22 @@ def maxima(w):
 a = [23, 22, 24, 25, 21, 22, 22]
 maxima(a)
 
+# Ex 10
+def sublistas(w):
+    if w == []:
+        return 0
+    elif isinstance(w[0], list):
+        return 1 + sublistas(w[1:]) + sublistas(w[0])
+    else:
+        return sublistas(w[1:])
+a = [[1], 2, [3]]
+sublistas(a) # 2       
+b = [[[[[1]]]]]
+sublistas(b) # 4
+c = ['a', [2, 3, [[[1]], 6, 7], 'b']]
+sublistas(c) # 4
+
+
 # Ex 11
 def filtra_numeros(w):
     def filtra_numeros_aux(r, x):
