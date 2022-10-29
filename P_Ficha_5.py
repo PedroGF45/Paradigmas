@@ -173,3 +173,19 @@ def soma_listas(w):
         return [soma(0, w[0])] + soma_listas(w[1:])
 a = [[2,0,7],[3,3],[8,5,1]]
 soma_listas(a) # [9, 16, 14]
+
+# Ex 14
+# Using soma from exercise 1
+def soma(i, r, x):
+    if i >= len(x):
+        return r
+    else:
+        return soma(i+1, r + x[i], x)
+
+def soma_listas(w):
+    if w == []:
+        return []
+    else:
+        return [soma(0, 0, w[0])] + soma_listas(w[1:])
+a = [[2,0,7],[3,3],[8,5,1]]
+soma_listas(a) # [9, 16, 14]
