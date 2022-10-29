@@ -116,3 +116,17 @@ def filtra_numeros(w):
  
 a = [0, -1, 2, -4, 4, 5, 6, -10]
 filtra_numeros(a)
+
+# Ex 12
+def filtra_numeros(w):
+    def filtra_numeros_aux(i, r, x):
+        if i >= len(x):
+            return r
+        elif x[i] < 0:
+            return filtra_numeros_aux (i+1, r + [x[i]], x)
+        else:
+            return filtra_numeros_aux(i+1, r, x)
+    return filtra_numeros_aux(0, [], w)
+ 
+a = [0, -1, 2, -4, 4, 5, 6, -10]
+filtra_numeros(a)
