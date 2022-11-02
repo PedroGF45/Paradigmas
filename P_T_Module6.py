@@ -66,3 +66,13 @@ def squareList(w):
     return r
 a = [1, 2, -3, 5, 10, 4]
 squareList(a) # [1, 4, 9, 25, 100, 16]
+
+# using for
+def squareList(w):
+    r = []
+    j = 0
+    for j in range(len(w)):
+        r = r + [w[j] * w[j]]
+    return r
+a = [1, 2, -3, 5, 10, 4]
+squareList(a) # [1, 4, 9, 25, 100, 16]
