@@ -173,3 +173,13 @@ def nomes(w):
         i += 1
     return r
 nomes(a) #  ['Maria','João']
+
+# Ex 13
+def inscritos(w):
+    i = 0
+    r = {}
+    while i < len(w):
+        r = r | {w[i][0]: len(w[i][1])}
+        i += 1
+    return r
+inscritos([ ['Cálculo', ['Cátia','Maria','Vera']], ['PP', ['Joao','Maria']] ]) 
