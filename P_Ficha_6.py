@@ -141,3 +141,16 @@ def num_pares_igual_impares_Q(w):
     else:
         return False
 num_pares_igual_impares_Q([2, 1, 4, 3, 7, 6]) # True
+
+# Ex 11
+def tuplo_ordenado_Q(t):
+    i = 0
+    r = True
+    while i < (len(t) - 1):
+        if t[i] > t[i+1]:
+            r = False
+        else:
+            r = True
+        i += 1
+    return r
+tuplo_ordenado_Q((16, 42, 43, 68, 82)) # True
