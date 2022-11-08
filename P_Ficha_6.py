@@ -113,3 +113,14 @@ def palindromoQ(w):
         i += 1
     return r
 palindromoQ(['r','a','d','a','r']) # True
+
+# Ex 9
+def soma_positivos(w):
+    i = 0
+    r = 0
+    while i < len(w):
+        if w[i] > 0:
+            r = r + w[i]
+        i += 1
+    return r
+soma_positivos([4, 3, 5, -1, -8]) # 12
