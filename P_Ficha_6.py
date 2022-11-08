@@ -182,4 +182,21 @@ def inscritos(w):
         r = r | {w[i][0]: len(w[i][1])}
         i += 1
     return r
-inscritos([ ['Cálculo', ['Cátia','Maria','Vera']], ['PP', ['Joao','Maria']] ]) 
+inscritos([ ['Cálculo', ['Cátia','Maria','Vera']], ['PP', ['Joao','Maria']] ]) # {'Cálculo': 3, 'PP': 2}
+
+# Ex 14
+r = [('Funchal', [23, 22, 24, 25, 21, 22, 22]), ('Lisboa', [15, 16, 18, 18, 17, 19,
+15]), ('Porto', [12, 15, 18, 14, 10, 12, 14])] 
+
+def existeQ(w, c, t):
+    i = 0
+    r = True
+    while i < len(w):
+        if c == w[i][0] and t == w[i][1][-2]:
+            return True
+        else:
+            r = False
+        i += 1
+    return r
+existeQ(r, 'Lisboa', 19) # True
+existeQ(r, 'Funchal', 21) # False
