@@ -100,3 +100,16 @@ def intercala_for(t1, t2):
         r = r + (t1[i],) + (t2[-i-1],)
     return r
 intercala_for((6,0,2,8,9), (1,4,7,6,3)) # (6, 3, 0, 6, 2, 7, 8, 4, 9, 1)
+
+# Ex 8
+def palindromoQ(w):
+    i = 0
+    r = True
+    while i < int(len(w) / 2): # i will only iterate trough half of the list
+        if w[i] == w[-i-1]:
+            r = True
+        else:
+            r = False
+        i += 1
+    return r
+palindromoQ(['r','a','d','a','r']) # True
