@@ -73,3 +73,24 @@ def substitui(w, v, p):
         i += 1
     return r
 substitui ([1, 2, 3, 2, 4], 2, 'a') # [1, 'a', 3, 'a', 4]
+
+# Ex 6
+def unico(t):
+    i = 0
+    r = ()
+    while i < len(t):
+        if t[i] not in r:
+            r = r + (t[i],)
+        i += 1
+    return r
+unico((2, 4, 3, 2, 2, 2, 3)) # (2, 4, 3)
+
+# Ex 7
+def intercala(t1, t2):
+    i = 0
+    r = ()
+    while i < len(t1):
+        r = r + (t1[i],) + (t2[-i-1],)
+        i += 1
+    return r
+intercala((6,0,2,8,9), (1,4,7,6,3)) # (6, 3, 0, 6, 2, 7, 8, 4, 9, 1)
