@@ -60,3 +60,16 @@ def maximo(w):
         i += 1
     return r
 maximo([-3, -1, -8]) # -1
+
+# Ex 5
+def substitui(w, v, p):
+    i = 0
+    r = []
+    while i < len(w):
+        if w[i] == v:
+            r = r + [p]
+        else:
+            r = r + [w[i]]
+        i += 1
+    return r
+substitui ([1, 2, 3, 2, 4], 2, 'a') # [1, 'a', 3, 'a', 4]
