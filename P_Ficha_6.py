@@ -19,6 +19,17 @@ a = 5
 soma_quadrados_for(a) # 55
 soma_quadrados_for(a) # 55
 
+# Ex 2
+def indices_lista(w, e):
+    i = 0
+    r = []
+    while i < len(w):
+        if w[i] == e:
+            r = r + [i]
+        i += 1
+    return r
+indices_lista(['a', 2, 'b', 'a'], 'a') # [0, 3]
+
 # Ex 3
 def filtra_pares_while(t):
     x = 0
