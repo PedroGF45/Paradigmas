@@ -105,7 +105,7 @@ intercala_for((6,0,2,8,9), (1,4,7,6,3)) # (6, 3, 0, 6, 2, 7, 8, 4, 9, 1)
 def palindromoQ(w):
     i = 0
     r = True
-    while i < int(len(w) / 2): # i will only iterate trough half of the list
+    while i < (len(w) / 2): 
         if w[i] == w[-i-1]:
             r = True
         else:
@@ -124,3 +124,20 @@ def soma_positivos(w):
         i += 1
     return r
 soma_positivos([4, 3, 5, -1, -8]) # 12
+
+# Ex 10
+def num_pares_igual_impares_Q(w):
+    i = 0
+    num_pares = 0
+    num_impares = 0
+    while i < len(w):
+        if w[i] % 2 == 0:
+            num_pares += 1
+        else:
+            num_impares += 1
+        i += 1
+    if num_pares == num_impares:
+        return True
+    else:
+        return False
+num_pares_igual_impares_Q([2, 1, 4, 3, 7, 6]) # True
