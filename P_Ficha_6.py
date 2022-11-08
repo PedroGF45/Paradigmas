@@ -61,6 +61,17 @@ def maximo(w):
     return r
 maximo([-3, -1, -8]) # -1
 
+def maximo(w):
+    n = len(w)
+    i = 1
+    r = w[0]
+    while i < n:
+        if w[i] > r:
+            r = w[i]
+        i += 1
+    return r
+maximo([-3, -1, -8]) # -1
+
 # Ex 5
 def substitui(w, v, p):
     i = 0
