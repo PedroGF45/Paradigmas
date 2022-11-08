@@ -49,3 +49,14 @@ def filtra_pares_for(t):
 a = (81, 55, 80, 62, 49) 
 filtra_pares_while(a) # (80, 62)
 filtra_pares_for(a) # (80, 62)
+
+# Ex 4
+def maximo(w):
+    i = 0
+    r = w[0]
+    while i < (len(w) - 1):
+        if w[i] > w[i+1]:
+            r = w[i]
+        i += 1
+    return r
+maximo([-3, -1, -8]) # -1
