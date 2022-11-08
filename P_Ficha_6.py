@@ -34,7 +34,6 @@ def filtra_pares_for(t):
     for i in range(len(t)):
         if (t[i] % 2 == 0):
             r = r + (t[i],)
-        i += 1
     return r
 a = (81, 55, 80, 62, 49) 
 filtra_pares_while(a) # (80, 62)
