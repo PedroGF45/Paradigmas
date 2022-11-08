@@ -154,3 +154,22 @@ def tuplo_ordenado_Q(t):
         i += 1
     return r
 tuplo_ordenado_Q((16, 42, 43, 68, 82)) # True
+
+# Ex 12
+a = [['Joao',10],['Maria',19],['Jose',12], ['João',19]]
+
+def nomes(w):
+    i = 0
+    max_nota = 0
+    r = []
+    while i < (len(w) - 1):
+        if w[i][1] <= w[i+1][1]:
+            max_nota = w[i+1][1]
+        i += 1
+    i = 0
+    while i < len(w):
+        if w[i][1] == max_nota:
+            r = r + [w[i][0]]
+        i += 1
+    return r
+nomes(a) #  ['Maria','João']
