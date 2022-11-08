@@ -86,11 +86,17 @@ def unico(t):
 unico((2, 4, 3, 2, 2, 2, 3)) # (2, 4, 3)
 
 # Ex 7
-def intercala(t1, t2):
+def intercala_while(t1, t2):
     i = 0
     r = ()
     while i < len(t1):
         r = r + (t1[i],) + (t2[-i-1],)
         i += 1
     return r
-intercala((6,0,2,8,9), (1,4,7,6,3)) # (6, 3, 0, 6, 2, 7, 8, 4, 9, 1)
+intercala_while((6,0,2,8,9), (1,4,7,6,3)) # (6, 3, 0, 6, 2, 7, 8, 4, 9, 1)
+def intercala_for(t1, t2):
+    r = ()
+    for i in range(len(t1)):
+        r = r + (t1[i],) + (t2[-i-1],)
+    return r
+intercala_for((6,0,2,8,9), (1,4,7,6,3)) # (6, 3, 0, 6, 2, 7, 8, 4, 9, 1)
