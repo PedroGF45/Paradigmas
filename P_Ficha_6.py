@@ -30,7 +30,6 @@ def filtra_pares_while(t):
     return r  
 
 def filtra_pares_for(t):
-    i = 0
     r = ()
     for i in range(len(t)):
         if (t[i] % 2 == 0):
