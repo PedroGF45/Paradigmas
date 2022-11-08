@@ -1,5 +1,24 @@
 # Imperative 
 
+# Ex 1
+def soma_quadrados_while(n):
+    i = 0
+    r = 0
+    while i <= n:
+        r = r + i*i
+        i += 1
+    return r
+
+def soma_quadrados_for(n):
+    r = 0
+    for i in range(n+1):
+        r = r + i*i
+        i += 1
+    return r
+a = 5
+soma_quadrados_for(a) # 55
+soma_quadrados_for(a) # 55
+
 # Ex 3
 def filtra_pares(t):
     x = 0
