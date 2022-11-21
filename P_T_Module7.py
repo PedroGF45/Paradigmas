@@ -42,3 +42,8 @@ def minimum(w): # minimum temperatur of all cities
             return y
     return reduce(menor, w)['temp']
 minimum(w) # -5
+#Or
+def minimumo(w): # Option for previous function
+    z = map(lambda x: x['temp'], w)
+    return min(z)
+minimumo(w) # -5
