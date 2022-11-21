@@ -31,5 +31,5 @@ acntQ(w) # False
 def acntQo(w):  #Check if all cities have negative temperatures using product with a sequence
     def prod(x, y):
         return x * y # need to use reduce because we have no function equivalent to 'all' but with products
-    return reduce(prod, map(lambda x: 1 if x['temp'] < 0 else 0, w)) == 1  
+    return reduce(prod, map(lambda x: 1 if x['temp'] < 0 else 0, w)) == 1  # Uses prod function on a list v == (map(lambda x: 1 if x['temp'] < 0 else 0, w))
 acntQo(w) # False
