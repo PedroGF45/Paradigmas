@@ -47,3 +47,18 @@ def minimumo(w): # Option for previous function
     z = map(lambda x: x['temp'], w)
     return min(z)
 minimumo(w) # -5
+
+# Function compostion
+
+a = [('Ana', 18), ('Carlos', 16), ('Beatriz', 10), ('Joao', 5)]
+
+def notas(p): # list of grades
+    return list(map(lambda x: x[1], p))
+notas(a) # [18, 16, 10, 5]
+
+def compoe(f, g):
+    return lambda x: g(f(x))
+def med(v):
+    return sum(v) / len(v)
+media = compoe(notas, med)
+media(a) # 12.25
