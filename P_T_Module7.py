@@ -18,3 +18,7 @@ lcnt(w) # ['Porto, 'Braga']
 def cntQ(w): #Check if exists a city with negative tempature
     return any(map(lambda x: x['temp'] < 0, w))
 cntQ(w) # True
+#Or
+def cntQo(w):
+    return sum(map(lambda x: 1 if x['temp'] < 0 else 0, w)) > 0 # True if sum is > 0
+cntQo(w) # True
