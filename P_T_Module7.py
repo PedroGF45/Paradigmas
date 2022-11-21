@@ -6,3 +6,8 @@ a = list(filter( lambda x: x['temp'] < 0, w)) # list of cities which temperature
 def numberNegativeCities(w):
     return len(w) 
 numberNegativeCities(a) # 2
+# Or
+def nNC(w):
+    return list(map(lambda x: 1 if x['temp'] < 0 else 0, w)) 
+nNC(w) # [0, 1, 0, 1]
+
