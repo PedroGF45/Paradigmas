@@ -33,3 +33,12 @@ def acntQo(w):  #Check if all cities have negative temperatures using product wi
         return x * y # need to use reduce because we have no function equivalent to 'all' but with products
     return reduce(prod, map(lambda x: 1 if x['temp'] < 0 else 0, w)) == 1  # Uses prod function on a list v == (map(lambda x: 1 if x['temp'] < 0 else 0, w))
 acntQo(w) # False
+
+def minimum(w): # minimum temperatur of all cities
+    def menor(x, y):
+        if x['temp'] < y['temp']:
+            return x
+        else:
+            return y
+    return reduce(menor, w)['temp']
+minimum(w) # -5
