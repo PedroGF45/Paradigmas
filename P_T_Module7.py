@@ -11,3 +11,10 @@ def nNC(w):
     return list(map(lambda x: 1 if x['temp'] < 0 else 0, w)) 
 nNC(w) # [0, 1, 0, 1]
 
+def lcnt(w): #List of cities with negative temperatura
+    return list(map(lambda x: x['cidade'], filter(lambda x: x['temp'] < 0, w)))
+lcnt(w) # ['Porto, 'Braga']
+
+def cntQ(w): #Check if exists a city with negative tempature
+    return any(map(lambda x: x['temp'] < 0, w))
+cntQ(w) # True
