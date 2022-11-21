@@ -22,3 +22,7 @@ cntQ(w) # True
 def cntQo(w):
     return sum(map(lambda x: 1 if x['temp'] < 0 else 0, w)) > 0 # True if sum is > 0
 cntQo(w) # True
+
+def acntQ(w): #Check if all cities have negative temperatures
+    return all(map(lambda x: x['temp'] < 0, w))
+acntQ(w) # False
