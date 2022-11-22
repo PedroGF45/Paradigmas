@@ -64,3 +64,8 @@ temp_media(r, 16) # ['Funchal', 'Lisboa']
 def substitui(w, v, p):
     return list(map(lambda x: p if x == v else x, w))
 substitui([1, 2, 3, 2, 4], 2, 'a') # [1, 'a', 3, 'a', 4]
+
+# Ex 10
+def conta_pares(w):
+    return sum(map(lambda x: 1 if x % 2 == 0 else 0, w))
+conta_pares([4, 3, 5, 1, 8]) # 2
