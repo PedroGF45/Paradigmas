@@ -29,7 +29,7 @@ def soma_listas(w):
 # Ex 5
 a = [['Joao',10],['Maria',17],['Jose',12], ['João',17]]
 def media(w):
-    return sum(map(lambda x: x[1], w)) / len(a)
+    return sum(map(lambda x: x[1], w)) / len(w)
 media(a) # 14.0
 
 def minima(w):
@@ -45,3 +45,11 @@ indices_lista(['a', 2, 'b', 'a'], 'a') # [0, 3]
 def todos_aprovadosQ(w):
     return all(map(lambda x: x[1] > 10, w))
 todos_aprovadosQ([['Tomas',10],['Maria',17],['Jose',12], ['João',17]]) # False
+
+def dezoitosQ(w):
+    return any(map(lambda x: x[1] >= 18, w))
+dezoitosQ([['Tomas',10],['Maria',17],['Jose',12], ['João',18]]) # True
+
+def inscritoQ(w, s):
+    return any(map(lambda x: x[0] == s, w))
+inscritoQ([['Tomas',10],['Maria',17],['Jose',12], ['João',18]], 'Bia') # False
