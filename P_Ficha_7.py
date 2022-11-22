@@ -40,3 +40,8 @@ minima(a) # 10
 def indices_lista(w, e):
     return list(filter(lambda x: w[x] == e, range(len(w))))
 indices_lista(['a', 2, 'b', 'a'], 'a') # [0, 3]
+
+# Ex 7
+def todos_aprovadosQ(w):
+    return all(map(lambda x: x[1] > 10, w))
+todos_aprovadosQ([['Tomas',10],['Maria',17],['Jose',12], ['João',17]]) # False
