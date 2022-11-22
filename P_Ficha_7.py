@@ -69,3 +69,8 @@ substitui([1, 2, 3, 2, 4], 2, 'a') # [1, 'a', 3, 'a', 4]
 def conta_pares(w):
     return sum(map(lambda x: 1 if x % 2 == 0 else 0, w))
 conta_pares([4, 3, 5, 1, 8]) # 2
+
+# Ex 11
+def inscritos(w):
+    return list(map(lambda x: (x[0],len(x[1])), w))
+inscritos([['Cálculo', ['Cátia','Maria','Vera']], ['PP', ['Joao','Maria']] ]) # [('Cálculo', 3), ('PP', 2)]
