@@ -59,3 +59,8 @@ def temp_media(w, t):
     return list(map(lambda x: x[0], filter(lambda x: (x[1] + x[2]) / 2 >= t, w)))
 r = [('Funchal', 23, 22), ('Lisboa', 19, 15), ('Porto', 12, 14)]
 temp_media(r, 16) # ['Funchal', 'Lisboa']
+
+# Ex 9
+def substitui(w, v, p):
+    return list(map(lambda x: p if x == v else x, w))
+substitui([1, 2, 3, 2, 4], 2, 'a') # [1, 'a', 3, 'a', 4]
