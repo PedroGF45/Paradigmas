@@ -43,7 +43,7 @@ indices_lista(['a', 2, 'b', 'a'], 'a') # [0, 3]
 
 # Ex 7
 def todos_aprovadosQ(w):
-    return all(map(lambda x: x[1] > 10, w))
+    return all(map(lambda x: x[1] >= 10, w))
 todos_aprovadosQ([['Tomas',10],['Maria',17],['Jose',12], ['João',17]]) # False
 
 def dezoitosQ(w):
@@ -74,3 +74,11 @@ conta_pares([4, 3, 5, 1, 8]) # 2
 def inscritos(w):
     return list(map(lambda x: (x[0],len(x[1])), w))
 inscritos([['Cálculo', ['Cátia','Maria','Vera']], ['PP', ['Joao','Maria']] ]) # [('Cálculo', 3), ('PP', 2)]
+
+# Ex 12
+from functools import reduce
+def aplana(w):
+    def concatena(x, y):
+        return x + y
+    return list(reduce(concatena, map(lambda x: x, w)))
+aplana([[2,3,8],[5,6]]) # [2, 3, 8, 5, 6]
