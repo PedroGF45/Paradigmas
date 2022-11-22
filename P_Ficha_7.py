@@ -19,3 +19,9 @@ maiores_iguais_10([0, 10, -20, 45, 23, 2, 4]) # [10, 45, 23]
 def soma_listas(w):
     return list(map(lambda x: sum(x), w))
 soma_listas([[4, 5, 6, 0],[2, 3, 7, 8],[3, 4, 5, -1]]) # [15, 20, 11]
+
+# Ex 5
+a = [['Joao',10],['Maria',17],['Jose',12], ['João',17]]
+def media(w):
+    return sum(map(lambda x: x[1], w)) / len(a)
+media(a) # 14.0
