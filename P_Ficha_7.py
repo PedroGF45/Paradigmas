@@ -14,3 +14,8 @@ primeiros([[4, 5, 6, 0],[2, 3, 7, 8],[3, 4, 5, -1]]) # (4, 2, 3)
 def maiores_iguais_10(w):
     return list(map(lambda x: x, filter(lambda x: x >= 10, w)))
 maiores_iguais_10([0, 10, -20, 45, 23, 2, 4]) # [10, 45, 23]
+
+# Ex 4
+def soma_listas(w):
+    return list(map(lambda x: sum(x), w))
+soma_listas([[4, 5, 6, 0],[2, 3, 7, 8],[3, 4, 5, -1]]) # [15, 20, 11]
