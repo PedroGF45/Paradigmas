@@ -53,3 +53,9 @@ dezoitosQ([['Tomas',10],['Maria',17],['Jose',12], ['João',18]]) # True
 def inscritoQ(w, s):
     return any(map(lambda x: x[0] == s, w))
 inscritoQ([['Tomas',10],['Maria',17],['Jose',12], ['João',18]], 'Bia') # False
+
+# Ex 8
+def temp_media(w, t):
+    return list(map(lambda x: x[0], filter(lambda x: (x[1] + x[2]) / 2 >= t, w)))
+r = [('Funchal', 23, 22), ('Lisboa', 19, 15), ('Porto', 12, 14)]
+temp_media(r, 16) # ['Funchal', 'Lisboa']
