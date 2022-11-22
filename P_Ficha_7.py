@@ -82,3 +82,10 @@ def aplana(w):
         return x + y
     return list(reduce(concatena, map(lambda x: x, w)))
 aplana([[2,3,8],[5,6]]) # [2, 3, 8, 5, 6]
+
+# Ex 13
+def produto_impares(w):
+    def prod(x, y):
+        return x * y
+    return reduce(prod, filter(lambda x: x % 2 != 0, w))
+produto_impares([1, 2, 3, 4, -5, 6]) # -15
