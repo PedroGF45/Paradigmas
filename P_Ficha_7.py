@@ -25,3 +25,7 @@ a = [['Joao',10],['Maria',17],['Jose',12], ['João',17]]
 def media(w):
     return sum(map(lambda x: x[1], w)) / len(a)
 media(a) # 14.0
+
+def minima(w):
+    return min(map(lambda x: x[1], w))
+minima(a) # 10
