@@ -51,3 +51,41 @@ def quicksort(w):
                     qs(particao(w)[2])
     return qs(w)
 quicksort(a) # [-6, 2, 4, 5, 7, 9, 10]
+
+# Mergesort
+def funde(x,y):
+    # assume-se que as listas x e y estão ordenadas
+    n=len(x)
+    k=len(y)
+    if n==0:
+        r=y
+    elif k==0:
+        r=x
+    else:
+        r=[]
+        i=0
+        j=0
+        while i<n and j<k:
+            if x[i]<=y[j]:
+                r=r+[x[i]]
+                i=i+1
+            else:
+                r=r+[y[j]]
+                j=j+1
+ # juntar a r eventuais elementos restantes
+# de uma das listas
+        if i<n:
+            r=r+x[i:n]
+        else:
+            r=r+y[j:k]
+    return r
+def fb(w):
+    if len(w) <= 1:
+        return w
+    else:
+        k = len(w)//2 # quociente da divisao inteira por 2
+        v1 = fb(w[:k])
+        v2 = fb(w[k:])
+        return funde(v1, v2)
+a = (9, -6, 4, 5, 7, 2, 10)
+fb(a)
