@@ -32,3 +32,22 @@ def self_dir(w):
         i = i + 1
     return r
 self_dir(a)
+
+# Advanced Algorithms
+# Quicksort 
+a = (9, -6, 4, 5, 7, 2, 10)
+def quicksort(w):
+    def particao(w):
+        e=w[0]
+        return [list(filter(lambda x: x<e, w)), \
+                list(filter(lambda x: x==e, w)), \
+                list(filter(lambda x: x>e, w))]
+    def qs(w):
+        if len(w)<2:
+            return w # lista ordenada
+        else:
+            return qs(particao(w)[0]) + \
+                    qs(particao(w)[1]) + \
+                    qs(particao(w)[2])
+    return qs(w)
+quicksort(a) # [-6, 2, 4, 5, 7, 9, 10]
