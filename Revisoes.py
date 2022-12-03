@@ -22,7 +22,16 @@ def f_for(w, x):
         if (w[i][1] > x):
             r += 1
     return r
-f_for(p,10) # 3
+f_for(p, 10) # 3
+
+# simlifying with for
+def f_for_simple(w, x):
+    r = 0
+    for z in w:
+        if z[1] > x:
+            r += 1
+    return r
+f_for_simple(p, 10) # 3
 
 # using while with list of dictionaries
 def f_o(w, x):
@@ -43,3 +52,12 @@ def f_o_for(w, x):
             r += 1
     return r
 f_o_for(q, 10) # 3
+
+# simplifying with for
+def f_o_for_simple(w, x):
+    r = 0
+    for z in w:
+        if z['nota'] > x:
+            r += 1
+    return r
+f_o_for_simple(q, 10) # 3
