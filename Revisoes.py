@@ -61,3 +61,35 @@ def f_o_for_simple(w, x):
             r += 1
     return r
 f_o_for_simple(q, 10) # 3
+
+# Create a list of elements
+p = [('Ana', 14), ('Ze', 18), ('Joao', 9), ('Martim', 12)]
+
+# using while 
+def list_names(w, x):
+    i = 0
+    r = []
+    while i < len(w):
+        if (w[i][1] > x):
+            r += [w[i][0]]
+        i += 1
+    return r
+list_names(p, 10) # ['Ana', 'Ze', 'Martim']
+
+# using for
+def list_names_for(w, x):
+    r = []
+    for i in range(len(w)):
+        if (w[i][1] > x):
+            r += [w[i][0]]
+    return r
+list_names_for(p, 10) # ['Ana', 'Ze', 'Martim']
+
+# using for simplified
+def list_names_for_simple(w, x):
+    r = []
+    for z in w:
+        if z[1] > x:
+            r += [z[0]]
+    return r
+list_names_for_simple(p, 10) # ['Ana', 'Ze', 'Martim']
