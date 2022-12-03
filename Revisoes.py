@@ -266,3 +266,15 @@ f(p, 10) # False
 def f(w, x):
     return sum(map(lambda z: 1 if z[1] >= x else 0, w)) == len(w)
 f(p, 10) # False
+
+p = [('Ana', 14), ('Ze', 18), ('Joao', 9), ('Martim', 12)]
+from functools import reduce
+# Using reduce
+def f(w):
+    def prod(x, y):
+        return x * y
+    return reduce(prod, map(lambda z: 1 if z[1] >= 10 else 0, w), 1) == 1 
+f(p) # False
+
+# Defining sum with reduce
+sum(w) = reduce(lambda x,y: x+ y, w, 0)
