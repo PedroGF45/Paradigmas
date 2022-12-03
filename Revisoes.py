@@ -237,3 +237,32 @@ def f(w):
     else:
         return min(map(lambda x: x[1], w))
 f(p) # 9
+
+# Checking conditions
+p = [('Ana', 14), ('Ze', 18), ('Joao', 9), ('Martim', 12)]
+
+# any student with a bigger value than x
+def f(w, x):
+    return any(map(lambda z: z[1] > x, w))
+f(p, 10) # True
+# or
+def f(w, x):
+    return len(list(filter(lambda z: z[1] > x, w))) > 0
+f(p, 10) # True
+# or
+def f(w, x):
+    return sum(map(lambda z: 1 if z[1] > x else 0, w)) > 0
+f(p, 10) # True
+
+# all students have a grade bigger than x
+def f(w, x):
+    return all(map(lambda z: z[1] >= x, w))
+f(p, 10) # False
+# or
+def f(w, x):
+    return len(list(filter(lambda z: z[1] >= x, w))) == len(w) # check if the length of the new list is equal to the list evaluated
+f(p, 10) # False
+# or
+def f(w, x):
+    return sum(map(lambda z: 1 if z[1] >= x else 0, w)) == len(w)
+f(p, 10) # False
