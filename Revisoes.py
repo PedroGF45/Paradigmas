@@ -200,3 +200,17 @@ def nota_max_for(w):
             r = w[i][1]
     return r
 nota_max_for(p) # 18
+
+
+# Functional programming
+
+p = [('Ana', 14), ('Ze', 18), ('Joao', 9), ('Martim', 12)]
+
+# Count number of approved
+def f(w, x):
+    return len(list(filter(lambda z: z[1] > x, w)))
+f(p, 10) # 3
+
+def f(w, x):
+    return sum(map(lambda z: 1 if z[1] > 12 else 0, w))
+f(p, 10) # 2
