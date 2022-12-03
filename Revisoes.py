@@ -62,6 +62,7 @@ def f_o_for_simple(w, x):
     return r
 f_o_for_simple(q, 10) # 3
 
+
 # Create a list of elements
 p = [('Ana', 14), ('Ze', 18), ('Joao', 9), ('Martim', 12)]
 
@@ -124,3 +125,38 @@ def list_for_simple(w, x):
             r += [z['nome']]
     return r
 list_for_simple(q, 10) # ['Ana', 'Ze', 'Martim']
+
+
+# Check if some/all check some condition
+p = [('Ana', 14), ('Ze', 18), ('Joao', 9), ('Martim', 12)]
+
+# using while
+def cond_list(w, x):
+    i = 0
+    r = False
+    while i < len(w) and not r: # or -> '..and r == False'
+        if w[i][1] > x:
+            r = True
+        i += 1
+    return r
+cond_list(p, 10) # True
+
+# using while simplified
+def cond_list(w, x):
+    i = 0
+    r = False
+    while i < len(w) and w[i][1] > x:
+        r = True
+        i += 1
+    return r
+cond_list(p, 19) # False
+
+def aprovadosQ(w):
+    i = 0
+    r = True
+    while i < len(w) and r: # or -> '..and r == True'
+        if w[i][1] < 10:
+            r = False
+        i += 1
+    return r
+aprovadosQ(p) # False
