@@ -160,3 +160,43 @@ def aprovadosQ(w):
         i += 1
     return r
 aprovadosQ(p) # False
+
+
+# Get maximum or minimum
+p = [('Ana', 14), ('Ze', 18), ('Joao', 9), ('Martim', 12)]
+
+# using while
+def nota_max(w):
+    if w == []:
+        print('Erro: Pauta sem alunos') # empty list. Can use '.. if len(w) == 0'
+    i = 0
+    r = 0
+    while i < (len(w) - 1):
+        if w[i][1] > w[i + 1][1]:
+            r = w[i][1]
+        i += 1
+    return r
+nota_max(p) # 18
+
+# different option
+def nota_max(w):
+    if w == []:
+        print('Erro: Pauta sem alunos') # empty list. Can use '.. if len(w) == 0'
+    r = w[0][1] # Assuming the first element is the biggest
+    i = 0
+    while i < len(w):
+        if w[i][1] > r:
+            r = w[i][1]
+        i += 1
+    return r
+
+# using for
+def nota_max_for(w):
+    if w == []:
+        print('Erro: Pauta sem alunos') # empty list. Can use '.. if len(w) == 0'
+    r = 0
+    for i in range(len(w) - 1):
+        if w[i][1] > w[i + 1][1]:
+            r = w[i][1]
+    return r
+nota_max_for(p) # 18
