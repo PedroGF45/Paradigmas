@@ -212,5 +212,11 @@ def f(w, x):
 f(p, 10) # 3
 
 def f(w, x):
-    return sum(map(lambda z: 1 if z[1] > 12 else 0, w))
-f(p, 10) # 2
+    return sum(map(lambda z: 1 if z[1] > x else 0, w))
+f(p, 12) # 2
+
+# create a list of the names who are approved
+def f(w, x):
+    return list(map(lambda y: y[0], filter(lambda z: z[1] > x, w))) # ['Ana', 'Ze', 'Martim']
+f(p, 10)
+
