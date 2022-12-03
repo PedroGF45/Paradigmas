@@ -220,3 +220,20 @@ def f(w, x):
     return list(map(lambda y: y[0], filter(lambda z: z[1] > x, w))) # ['Ana', 'Ze', 'Martim']
 f(p, 10)
 
+# get the maximum of a list of tuples
+p = [('Ana', 14), ('Ze', 18), ('Joao', 9), ('Martim', 12)]
+
+def f(w):
+    if w == []:
+        print('Error: lempty list')
+    else:
+        return max(map(lambda x: x[1], w))
+f(p) # 18
+
+# get the minimum of a list of tuples
+def f(w):
+    if w == []:
+        print('Error: empty list')
+    else:
+        return min(map(lambda x: x[1], w))
+f(p) # 9
