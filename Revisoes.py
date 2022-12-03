@@ -93,3 +93,34 @@ def list_names_for_simple(w, x):
             r += [z[0]]
     return r
 list_names_for_simple(p, 10) # ['Ana', 'Ze', 'Martim']
+
+q = [{'nome': 'Ana', 'nota': 14}, {'nome': 'Ze', 'nota': 18}, {'nome': 'Joao', 'nota': 9}, {'nome': 'Martim', 'nota': 12}]
+ 
+ # using while
+def list_while(w, x):
+    r = []
+    i = 0
+    while i < len(w):
+        if (w[i]['nota'] > x):
+            r += [w[i]['nome']]
+        i += 1
+    return r
+list_while(q, 10) # ['Ana', 'Ze', 'Martim']
+
+# using for
+def list_for(w, x):
+    r = []
+    for i in range(len(w)):
+        if (w[i]['nota'] > x):
+            r += [w[i]['nome']]
+    return r
+list_for(q, 10) # ['Ana', 'Ze', 'Martim']
+
+# using for simplified
+def list_for_simple(w, x):
+    r = []
+    for z in w:
+        if z['nota'] > x:
+            r += [z['nome']]
+    return r
+list_for_simple(q, 10) # ['Ana', 'Ze', 'Martim']
