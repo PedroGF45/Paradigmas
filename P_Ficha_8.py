@@ -72,3 +72,37 @@ def desUlt(f):
 
 def comp(f):
     return sum(map(lambda x: 1 if x else 0, f))
+
+# Exercise 3
+def nova():
+    return []
+
+def sobrepoe(p, n):
+    return [n] + p
+
+def vaziaQ(p):
+    if len(p) == 0:
+        return True
+    else:
+        return False
+
+def topo(p):
+    if len(p) == 0:
+        print('Erro: sequencia vazia')
+    else:
+        return p[0]
+
+def retira(p):
+    if len(p) == 0:
+        print('Erro: sequencia vazia')
+    else:
+        return p[1:]
+
+def tot(p):
+    return len(p)
+
+def base(p):
+    if len(p) == 0:
+        print('Erro: sequencia vazia')
+    else:
+        return p[-1]        
