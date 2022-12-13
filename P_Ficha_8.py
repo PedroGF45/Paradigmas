@@ -1,5 +1,5 @@
 # Exercise 1
-def nova(w):
+def nova():
     return []
 
 def acr(s, n):
@@ -39,3 +39,36 @@ def insereOrdenada(s, n):
 def ordenadaQ(s):
     return all(map(lambda x: s[x] <= s[x+1], range(len(s) - 1)))
 
+# Exercise 2
+def nova():
+    return []
+
+def entra(f, x):
+    return f + [x]
+
+def vaziaQ(f):
+    if len(f) == 0:
+        return True
+    else:
+        return False
+
+def primeiro(f):
+    if len(f) == 0:
+        print('sequencia vazia')
+    else:
+        return f[0]
+
+def sai(f):
+    if len(f) == 0:
+        print('sequencia vazia')
+    else: 
+        return f[1:]
+
+def desUlt(f):
+    if len(f) == 0:
+        print('sequencia vazia')
+    else:
+        return f[:-1]
+
+def comp(f):
+    return sum(map(lambda x: 1 if x else 0, f))
