@@ -37,3 +37,33 @@ class sequencia:
         while i < k and self._ri[i] <= n:
             i += 1
         self._ri.insert(i, n)
+
+# Exercise 2
+
+class fila:
+    def __init__(self):
+        self._ri = []
+    
+    def entra(self, x):
+        self._ri.append(x)
+
+    def vaziaQ(self):
+        return self._ri == []
+
+    def primeiro(self):
+        if self.vaziaQ():
+            print('Erro: sequencia vazia')
+        else:
+            self._ri[0]
+    
+    def sai(self):
+        if self.vaziaQ():
+            print('Erro: sequencia vazia')
+        else:
+            del(self._ri[0])
+
+    def desUlt(self):
+        if self.vaziaQ():
+            print('Erro: sequencia vazia')
+        else:
+            del(self._ri[-1])
