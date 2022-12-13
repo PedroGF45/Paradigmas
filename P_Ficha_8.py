@@ -78,7 +78,7 @@ def nova():
     return []
 
 def sobrepoe(p, n):
-    return [n] + p
+    return p + [n]
 
 def vaziaQ(p):
     if len(p) == 0:
@@ -90,13 +90,13 @@ def topo(p):
     if len(p) == 0:
         print('Erro: sequencia vazia')
     else:
-        return p[0]
+        return p[-1]
 
 def retira(p):
     if len(p) == 0:
         print('Erro: sequencia vazia')
     else:
-        return p[1:]
+        return p[:-1]
 
 def tot(p):
     return len(p)
@@ -105,4 +105,4 @@ def base(p):
     if len(p) == 0:
         print('Erro: sequencia vazia')
     else:
-        return p[-1]        
+        return p[0]        
