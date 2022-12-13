@@ -67,3 +67,29 @@ class fila:
             print('Erro: sequencia vazia')
         else:
             del(self._ri[-1])
+
+# Exercise 3
+class pilha:
+    def __init__(self):
+        self._ri = []
+
+    def sobrepoe(self, n):
+        self._ri.append(n)
+
+    def vaziaQ(self):
+        return self._ri == []
+
+    def topo(self):
+        if self.vaziaQ():
+            print('Erro: pilha vazia')
+        else:
+            return self._ri[-1]
+    
+    def retira(self):
+        if self.vaziaQ():
+            print('Erro: pilha vazia')
+        else:
+            del(self._ri[-1])
+
+    def tot(self):
+        return len(self._ri)
