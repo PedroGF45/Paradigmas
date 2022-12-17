@@ -105,4 +105,54 @@ def base(p):
     if len(p) == 0:
         print('Erro: sequencia vazia')
     else:
-        return p[0]        
+        return p[0]    
+
+def existeQ(w, k):
+    i = 0
+    r = False
+    while i < len(w):
+        if w[i][2] <= k:
+            return True
+        i += 1
+    return r
+
+def existe2Q(w, k):
+    return any(map(lambda x: True if x[2] <= k else False, w))
+
+def nova():
+    return []
+
+def acr(s, n):
+    return s + [n]
+
+def ultimo(s):
+    if len(s) == 0:
+        print('Erro: sequencia vazia')
+    else:
+        return s[-1]
+    
+def tiraUlt(s):
+    if len(s) == 0:
+        print('Erro: sequencia vazia')
+    else:
+        return s[:-1]
+
+def vaziaQ(s):
+    return len(s) == 0
+
+def conta(s, k):
+    return sum(map(lambda x: 1 if x == k else 0, s))
+
+def ret(s, k):
+    return list(filter(lambda x: x != k, s))
+
+def ordenadaQ(s):
+    return all(map(lambda x: s[x] <= s[x+1], range(len(s)-1)))
+
+def igualQ(s1, s2):
+    if vaziaQ(s1) and vaziaQ(s2):
+        return True
+    elif ultimo(s1) == ultimo(s2):
+        return igualQ(tiraUlt(s1), tiraUlt(s2))
+    else:
+        return False    
