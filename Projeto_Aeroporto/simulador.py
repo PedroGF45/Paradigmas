@@ -30,11 +30,12 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
         nma = 0
         
     def simula_evento(evt):
+        global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma
 
-            if (ts > 180 and ts < 187):
-                e = evento(ic + obsexp(mc1), 'aterra')
-            else:
-                e = evento(ic + obsexp(mc2), 'aterra')
+        if (ts > 180 and ts < 660):
+            e = evento(ic + obsexp(mc2), 'aterra')
+        else:
+            e = evento(ic + obsexp(mc1), 'aterra')
 
 
     def finaliza():
