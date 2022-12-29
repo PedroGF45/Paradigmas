@@ -32,16 +32,42 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
     def simula_evento(evt):
         global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma
 
-        if (ts > 180 and ts < 660):
-            e = evento(ic + obsexp(mc2), 'aterra')
-        else:
-            e = evento(ic + obsexp(mc1), 'aterra')
+        if evt.cat() == 'cheg':
+            if (ts > 180 and ts < 660):
+                e = evento(ic + obsexp(mc2), 'chega')
+                c.acr(e)
+                e = evento(ic + obsexp(ma), 'aterra')
+                c.acr(e)
+            else:
+                e = evento(ic + obsexp(mc1), 'chega')
+                c.acr(e)
+                e = evento(ic + obsexp(ma), 'aterra')
+                c.acr(e)
+        elif evt.cat() == 'aterra':
+            if pista == 'ocupada':
+                f.entra(ic)
+                if f.comp() > nmea:
+                    nmea = f.comp()
+            else:
+                pista = 'ocupada'
+                e = evento(ic + obsexp(me), 'estadia')
+                c.acr(e)
+                e = evento(ic + obsexp(md), 'descola')
+                c.acr(e)
+        else: # evt.cat() == 'descola'
+            if f.vaziaQ():
+                pista = 'livre'
+            else:
+                f.sai()
+                e = evento(ic + obsexp(md), 'descola')
+                c.acr(e)
+
 
 
     def finaliza():
         
         print('Tempo médio de espera para descolar', tmed)
-        print('Tempo máximo d espera para aterrar de um avião prioritário', tmeap)
+        print('Tempo máximo de espera para aterrar de um avião prioritário', tmeap)
         print('Tempo máximo de esepera para aterrar de um avião não prioritário','%.2f' % tmeanp)
         print('Número máximo de aviões à espera para aterrar', nmea)  
         print('Número total de aviões que desistiram de estar à espera para aterrar', nad)  
