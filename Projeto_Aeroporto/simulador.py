@@ -18,7 +18,7 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
         c = cap()
         f = fila()
         ic = 0
-        e = evento(ic + obsexp(mc1), 'aterra')
+        e = evento(ic + obsexp(mc1), 'chega')
         c.acr(e)
         pe = e
         pista = 'livre'
@@ -66,12 +66,12 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
 
     def finaliza():
         
-        print('Tempo médio de espera para descolar', tmed)
-        print('Tempo máximo de espera para aterrar de um avião prioritário', tmeap)
-        print('Tempo máximo de esepera para aterrar de um avião não prioritário','%.2f' % tmeanp)
-        print('Número máximo de aviões à espera para aterrar', nmea)  
-        print('Número total de aviões que desistiram de estar à espera para aterrar', nad)  
-        print('Número máximo de aviões que esteve no aeroporto', nma)  
+        print('Tempo medio de espera para descolar', tmed)
+        print('Tempo maximo de espera para aterrar de um aviao prioritario', tmeap)
+        print('Tempo maximo de esepera para aterrar de um aviao nao prioritario','%.2f' % tmeanp)
+        print('Numero maximo de avioes a espera para aterrar', nmea)  
+        print('Numero total de avioes que desistiram de estar a espera para aterrar', nad)  
+        print('Numero maximo de avioes que esteve no aeroporto', nma)  
         
     
     # corpo do programa simulador:       
@@ -87,3 +87,4 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
 
     finaliza()
      #fim do programa simulador  
+

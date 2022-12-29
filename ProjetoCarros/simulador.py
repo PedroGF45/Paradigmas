@@ -42,7 +42,7 @@ def simula(tec, tpt, tdp, ts):
                 nct = nct - 1
                 x = randint(1,5)
                 if x == 5:
-                    if portageiro == 'ocupado':
+                    if portageiro == 'livre':
                         f.entra(ic)
                         if f.comp() > nmaxf:
                             nmaxf = f.comp()
