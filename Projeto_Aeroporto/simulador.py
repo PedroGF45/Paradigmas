@@ -1,10 +1,10 @@
-from random import *
-from math import *
-from eventos import *
-from cadeias import *
-from filas import *
+from random import random
+from math import log
+from eventos import evento
+from cadeias import cap
+from filas import fila
 
-def simula(mc1, mc2, ma, me, md, x, y, ts):
+def simula(mc1, mc2, ma, me, md, ts):
     
     global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma
     
@@ -74,17 +74,15 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
         print('Numero maximo de avioes que esteve no aeroporto', nma)  
         
     
+    
     # corpo do programa simulador:       
     inicializa()
-
     while pe.inst() <= ts:
         ic = pe.inst()
-        # simula prox evento
+        # simula próximo evento:
         simula_evento(pe)
-        #atualiza prox evento a simular
+        # atualiza próximo evento a simular
         c.retira()
         pe = c.proximo()
-
     finaliza()
-     #fim do programa simulador  
-
+    #fim do programa simulador  
