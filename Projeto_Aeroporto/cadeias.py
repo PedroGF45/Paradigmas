@@ -7,9 +7,9 @@ class cap:
         if isinstance(e, evento):
             i = 0
             w = self._ri
-            while i < len(w) and w[i].inst() <= e.inst():
-                i = i+1
-                self._ri.insert(i, e)
+            while i < (len(w) - 1) and w[i].inst() <= e.inst():
+                i += 1
+            self._ri.insert(i, e)
         else:
             raise ValueError('o argumento não é um evento')
 
