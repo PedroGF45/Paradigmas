@@ -13,13 +13,13 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         return -m * log(x)
     
     def inicializa():
-        global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
+        global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma
     
         c = cap()
         f = fila()
         ic = 0
-        e = evento(ic + obsexp(mc1), 'chega')
-        c.acr(e, 'nao_pri')
+        e = evento(ic + obsexp(mc1), 'chega') 
+        c.acr(e)
         pe = e
         pista = 'livre'
         tmed = 0
@@ -28,22 +28,20 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         nmea = 0
         nad = 0
         nma = 0
-        print('aqui primeiro')
     def simula_evento(evt):
         global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
         if evt.cat() == 'chega':
             if (ts > 180 and ts < 660):
                 e = evento(ic + obsexp(mc2), 'chega')
-                c.acr(e, 'nao_pri')
+                c.acr(e)
                 e = evento(ic + obsexp(ma), 'aterra')
-                c.acr(e, 'nao_pri')
+                c.acr(e)
             else:
                 e = evento(ic + obsexp(mc1), 'chega')
                 c.acr(e, 'nao_pri')
                 e = evento(ic + obsexp(ma), 'aterra')
                 c.acr(e, 'nao_pri')
         elif evt.cat() == 'aterra':
-            p = randint(1, x)
             if pista == 'ocupada': # and p == x:
                 f.entra(ic) 
                 if f.comp() > nmea:
