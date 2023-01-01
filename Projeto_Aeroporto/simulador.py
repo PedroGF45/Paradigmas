@@ -19,7 +19,7 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         f = fila()
         ic = 0
         e = evento(ic + obsexp(mc1), 'chega')
-        c.acr(e)
+        c.acr(e, 'nao_pri')
         pe = e
         pista = 'livre'
         tmed = 0
@@ -34,34 +34,36 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         if evt.cat() == 'chega':
             if (ts > 180 and ts < 660):
                 e = evento(ic + obsexp(mc2), 'chega')
-                c.acr(e)
+                c.acr(e, 'nao_pri')
                 e = evento(ic + obsexp(ma), 'aterra')
-                c.acr(e)
+                c.acr(e, 'nao_pri')
             else:
                 e = evento(ic + obsexp(mc1), 'chega')
-                c.acr(e)
+                c.acr(e, 'nao_pri')
                 e = evento(ic + obsexp(ma), 'aterra')
-                c.acr(e)
+                c.acr(e, 'nao_pri')
         elif evt.cat() == 'aterra':
             p = randint(1, x)
             if pista == 'ocupada': # and p == x:
-                f.entra(ic) # aviao prioritario
+                f.entra(ic) 
                 if f.comp() > nmea:
                     nmea = f.comp()
             else:
                 pista = 'ocupada'
                 e = evento(ic + obsexp(me), 'estadia')
-                c.acr(e)
+                c.acr(e, 'nao_pri')
                 e = evento(ic + obsexp(md), 'descola')
-                c.acr(e)
+                c.acr(e, 'nao_pri')
+            if ic - evt.inst() > 20 and randint(1, 10) == 5 and f.comp() > 15:
+                f.elimina(evt.inst())
         # elif evt.cat() == 'estadia':
         else: # evt.cat() == 'descola' 
             if f.vaziaQ():
                 pista = 'livre'
             else:
                 f.sai()
-                e = evento(ic + obsexp(md), 'fim')
-                c.acr(e)
+                e = evento(ic + obsexp(md), 'fimd')
+                c.acr(e, 'nao_pri')
 
 
 

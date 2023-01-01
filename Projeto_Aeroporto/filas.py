@@ -7,7 +7,7 @@ class fila:
         self._ri.insert(len(self._ri),elemento)
 
     def elimina(self, elemento):
-        del(self._ri[elemento])
+        self._ri.remove(elemento)
         
     def vaziaQ(self):
         return self._ri == []
