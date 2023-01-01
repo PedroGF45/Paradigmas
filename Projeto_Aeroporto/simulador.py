@@ -2,7 +2,7 @@ from random import random, randint
 from math import log
 from eventos import evento
 from cadeias import cap
-from filas import fila_aterragem, fila_descolagem
+from filas import fila_fategem, fila_fdesgem
 
 def simula(mc1, mc2, ma, me, md, x, ts):
     
@@ -16,8 +16,8 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
     
         c = cap()
-        fater = fila_aterragem()
-        fdesc = fila_descolagem()
+        fater = fila_fategem()
+        fdesc = fila_fdesgem()
         ic = 0
 
         if 1/x == x:
@@ -45,43 +45,62 @@ def simula(mc1, mc2, ma, me, md, x, ts):
 
         if evt.cat() == 'chega':
             if (ts > 180 and ts < 660):
-                    e = evento(ic + obsexp(mc2), 'chega', 'indiferente')
+                    e = evento(ic + obsexp(mc2), 'chega', 'indiferente') 
                     c.acr(e)
-                    e = evento(ic + obsexp(ma), 'aterra', p)
-                    c.acr(e)
+                    
             else:
                     e = evento(ic + obsexp(mc1), 'chega', 'indiferente')
                     c.acr(e)
-                    e = evento(ic + obsexp(ma), 'aterra', p)
+            
+            if pista == 'livre' and evt.cat() == 'chega':
+                if fater.vaziaQ:
+                    e = evento(ic + obsexp(me), 'fate', 'indiferente')
                     c.acr(e)
+                    pista = 'ocupada'
+                else:
+                    e = evento(ic + obsexp(me), 'fate', 'indiferente')
+                    c.acr(e)
+                    fater.sai()
+                    pista = 'ocupada'
+            elif pista == 'ocupada' and evt.cat() == 'chega': 
+                    fater.entra(ic) 
+                    if fater.comp() > nmea:
+                        nmea = fater.comp()
 
-        elif evt.cat() == 'aterra' or evt.cat() == 'descola':
-            # checkar se existe algum aviao prioritario e manda-lo aterrar
-            # se existerem menos de y avioes para descolar, podem aterrar os outros avioes
-            # se nao existerem avioes nas filas, pista livre
-            if pista == 'ocupada': # and p == x:
-                fater.entra(ic) 
-                if fater.comp() > nmea:
-                    nmea = fater.comp()
-            else:
-                pista = 'ocupada'
-                fater.sai()
-                e = evento(ic + obsexp(me), 'estadia', 'indiferente')
-                c.acr(e)
+            if pista == 'livre' and evt.cat() == 'fdes':
+                if fdesc.vaziaQ:
+                    pista = 'ocupada'
+                else:
+                    e = evento(ic + obsexp(me), 'fdes', 'indiferente')
+                    c.acr(e)
+                    fdesc.sai()
+                    pista = 'ocupada'
+            elif pista == 'ocupada' and evt.cat() == 'fdes': 
+                    e = evento(ic + obsexp(me), 'fdes', 'indiferente')
+                    c.acr(e)
+                    fdesc.entra(ic) 
+                    
+
+        elif evt.cat() == 'fate' or evt.cat() == 'fdes':
+
+            # checkar se existe algum aviao prioritario e manda-lo fater
+            # se existerem menos de y avioes para fdesr, podem fater os outros avioes
+            # se nao existerem avioes nas filas, pista livre         
+                
 
             if ic - evt.inst() > 20 and evt.pri() == 'nao_prioritario' and randint(1, 10) == 5 and fater.comp() > 15:
                 fater.elimina(evt.inst())
 
-        elif evt.cat() == 'estadia':
-            e = evento(ic + obsexp(md), 'descola', 'indiferente')
+        elif evt.cat() == 'fest':
+            e = evento(ic + obsexp(md), 'fdes', 'indiferente')
             c.acr(e)
 
-        else: # evt.cat() == 'descola' 
+        else: # evt.cat() == 'fdes' 
             if f.vaziaQ():
                 pista = 'livre'
             else: 
                 fdesc.entra(ic)
-                e = evento(ic + obsexp(md), 'descola', 'indiferente')
+                e = evento(ic + obsexp(md), 'fdes', 'indiferente')
                 c.acr(e)
 
 
@@ -89,11 +108,11 @@ def simula(mc1, mc2, ma, me, md, x, ts):
 
     def finaliza():
         
-        print('Tempo medio de espera para descolar', tmed)
-        print('Tempo maximo de espera para aterrar de um aviao prioritario', tmeap)
-        print('Tempo maximo de espera para aterrar de um aviao nao prioritario','%.2f' % tmeanp)
-        print('Numero maximo de avioes a espera para aterrar', nmea)  
-        print('Numero total de avioes que desistiram de estar a espera para aterrar', nad)  
+        print('Tempo medio de espera para fdesr', tmed)
+        print('Tempo maximo de espera para fater de um aviao prioritario', tmeap)
+        print('Tempo maximo de espera para fater de um aviao nao prioritario','%.2f' % tmeanp)
+        print('Numero maximo de avioes a espera para fater', nmea)  
+        print('Numero total de avioes que desistiram de estar a espera para fater', nad)  
         print('Numero maximo de avioes que esteve no aeroporto', nma)  
         
     
