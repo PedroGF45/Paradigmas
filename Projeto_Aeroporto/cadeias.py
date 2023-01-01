@@ -16,6 +16,10 @@ class cap:
     def vaziaQ(self):
         return self._ri == []
 
+    def existeQ(self, elemento):
+        for i in range(len(self._ri)):
+            return elemento in self._ri[i]      
+
     def retira(self):
         if self.vaziaQ():
             raise ValueError('operação sai aplicada a fila vazia')
