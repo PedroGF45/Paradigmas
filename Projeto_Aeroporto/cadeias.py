@@ -3,10 +3,10 @@ class cap:
     def __init__(self):
         self._ri = []
 
-    def acr(self, e, prop):
-        if isinstance(e, evento) and prop == 'pri':
+    def acr(self, e):
+        if isinstance(e, evento) and e.prio():
             self._ri.insert(0, e)
-        elif isinstance(e, evento) and prop == 'nao_pri':
+        elif isinstance(e, evento) and not e.prio():
             i = 0
             w = self._ri
             while i < (len(w) - 1) and w[i].inst() <= e.inst():
