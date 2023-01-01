@@ -20,11 +20,11 @@ class cap:
         for i in range(len(self._ri)):
             return elemento in self._ri[i]      
 
-    def retira(self):
+    def retira(self, elemento):
         if self.vaziaQ():
             raise ValueError('operação sai aplicada a fila vazia')
         else:
-            del (self._ri[0])
+            del (self._ri[elemento])
 
     def proximo(self):
         if self.vaziaQ():
