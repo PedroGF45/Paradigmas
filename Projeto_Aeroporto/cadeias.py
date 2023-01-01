@@ -4,9 +4,7 @@ class cap:
         self._ri = []
 
     def acr(self, e):
-        if isinstance(e, evento):
-            self._ri.insert(0, e)
-        elif isinstance(e, evento) :
+        if isinstance(e, evento) :
             i = 0
             w = self._ri
             while i < (len(w) - 1) and w[i].inst() <= e.inst():

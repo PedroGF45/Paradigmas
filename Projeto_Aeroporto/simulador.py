@@ -13,14 +13,20 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         return -m * log(x)
     
     def inicializa():
-        global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma
+        global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
     
         c = cap()
         f = fila()
         ic = 0
-        e = evento(ic + obsexp(mc1), 'chega') 
+
+        if 1/x == x:
+            p = 'prioritario'
+        else:
+            p = 'nao_prioritario'
+        e = evento(ic + obsexp(mc1), 'chega', p) 
         c.acr(e)
         pe = e
+
         pista = 'livre'
         tmed = 0
         tmeap = 0
@@ -30,17 +36,24 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         nma = 0
     def simula_evento(evt):
         global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
+
+        if 1/x == x:
+            p = 'prioritario'
+        else:
+            p = 'nao_prioritario'
+
         if evt.cat() == 'chega':
             if (ts > 180 and ts < 660):
-                e = evento(ic + obsexp(mc2), 'chega')
-                c.acr(e)
-                e = evento(ic + obsexp(ma), 'aterra')
-                c.acr(e)
+                    e = evento(ic + obsexp(mc2), 'chega', 'indiferente')
+                    c.acr(e)
+                    e = evento(ic + obsexp(ma), 'aterra', p)
+                    c.acr(e)
             else:
-                e = evento(ic + obsexp(mc1), 'chega')
-                c.acr(e, 'nao_pri')
-                e = evento(ic + obsexp(ma), 'aterra')
-                c.acr(e, 'nao_pri')
+                    e = evento(ic + obsexp(mc1), 'chega', 'indiferente')
+                    c.acr(e)
+                    e = evento(ic + obsexp(ma), 'aterra', p)
+                    c.acr(e)
+
         elif evt.cat() == 'aterra':
             if pista == 'ocupada': # and p == x:
                 f.entra(ic) 
@@ -48,20 +61,23 @@ def simula(mc1, mc2, ma, me, md, x, ts):
                     nmea = f.comp()
             else:
                 pista = 'ocupada'
-                e = evento(ic + obsexp(me), 'estadia')
-                c.acr(e, 'nao_pri')
-                e = evento(ic + obsexp(md), 'descola')
-                c.acr(e, 'nao_pri')
+                e = evento(ic + obsexp(me), 'estadia', 'indiferente')
+                c.acr(e)
+
             if ic - evt.inst() > 20 and randint(1, 10) == 5 and f.comp() > 15:
                 f.elimina(evt.inst())
-        # elif evt.cat() == 'estadia':
+
+        elif evt.cat() == 'estadia':
+            e = evento(ic + obsexp(md), 'descola', 'indiferente')
+            c.acr(e)
+
         else: # evt.cat() == 'descola' 
             if f.vaziaQ():
                 pista = 'livre'
             else:
                 f.sai()
-                e = evento(ic + obsexp(md), 'fimd')
-                c.acr(e, 'nao_pri')
+                e = evento(ic + obsexp(md), 'descola', 'indiferente')
+                c.acr(e)
 
 
 
