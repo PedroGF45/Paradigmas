@@ -2,7 +2,7 @@ from random import random, randint
 from math import log
 from eventos import evento
 from cadeias import cap
-from filas import fila
+from filas import fila_aterragem, fila_descolagem
 
 def simula(mc1, mc2, ma, me, md, x, ts):
     
@@ -13,10 +13,11 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         return -m * log(x)
     
     def inicializa():
-        global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
+        global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
     
         c = cap()
-        f = fila()
+        fater = fila_aterragem()
+        fdesc = fila_descolagem()
         ic = 0
 
         if 1/x == x:
@@ -35,7 +36,7 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         nad = 0
         nma = 0
     def simula_evento(evt):
-        global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
+        global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
 
         if 1/x == x:
             p = 'prioritario'
@@ -54,18 +55,22 @@ def simula(mc1, mc2, ma, me, md, x, ts):
                     e = evento(ic + obsexp(ma), 'aterra', p)
                     c.acr(e)
 
-        elif evt.cat() == 'aterra':
+        elif evt.cat() == 'aterra' or evt.cat() == 'descola':
+            # checkar se existe algum aviao prioritario e manda-lo aterrar
+            # se existerem menos de y avioes para descolar, podem aterrar os outros avioes
+            # se nao existerem avioes nas filas, pista livre
             if pista == 'ocupada': # and p == x:
-                f.entra(ic) 
-                if f.comp() > nmea:
-                    nmea = f.comp()
+                fater.entra(ic) 
+                if fater.comp() > nmea:
+                    nmea = fater.comp()
             else:
                 pista = 'ocupada'
+                fater.sai()
                 e = evento(ic + obsexp(me), 'estadia', 'indiferente')
                 c.acr(e)
 
-            if ic - evt.inst() > 20 and randint(1, 10) == 5 and f.comp() > 15:
-                f.elimina(evt.inst())
+            if ic - evt.inst() > 20 and evt.pri() == 'nao_prioritario' and randint(1, 10) == 5 and fater.comp() > 15:
+                fater.elimina(evt.inst())
 
         elif evt.cat() == 'estadia':
             e = evento(ic + obsexp(md), 'descola', 'indiferente')
@@ -74,8 +79,8 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         else: # evt.cat() == 'descola' 
             if f.vaziaQ():
                 pista = 'livre'
-            else:
-                f.sai()
+            else: 
+                fdesc.entra(ic)
                 e = evento(ic + obsexp(md), 'descola', 'indiferente')
                 c.acr(e)
 
