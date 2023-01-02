@@ -6,7 +6,7 @@ from filas import fila_aterragem, fila_descolagem
 
 def simula(mc1, mc2, ma, me, md, x, ts):
     
-    global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
+    global c, f, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p, na
     
     def obsexp(m):
         x = random()
@@ -35,14 +35,10 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         nmea = 0
         nad = 0
         nma = 0
+        na = 0
     def simula_evento(evt):
         global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
-
-        if 1/x == x:
-            p = 'prioritario'
-        else:
-            p = 'nao_prioritario'
-
+        
         if evt.cat() == 'chega':
             if (ts > 180 and ts < 660): # arrival of new planes depending on the current time of the simulation
                     e = evento(ic + obsexp(mc2), 'chega', 'indiferente') 
@@ -50,27 +46,41 @@ def simula(mc1, mc2, ma, me, md, x, ts):
             else:
                     e = evento(ic + obsexp(mc1), 'chega', 'indiferente')
                     c.acr(e)
-            
-            if pista == 'livre' and evt.cat() == 'chega': 
+
+            if 1/x == x:
+                p = 'prioritario'
+            else:
+                p = 'nao_prioritario'
+
+            if pista == 'livre':
                 if fater.vaziaQ(): # check if queue is empty
-                    e = evento(ic + obsexp(me), 'fate', 'indiferente') # add next event which is end of landing
+                    e = evento(ic + obsexp(ma), 'fate', p)
                     c.acr(e)
                     pista = 'ocupada'
                 else:
-                    e = evento(ic + obsexp(me), 'fate', 'indiferente')
+                    e = evento(ic + obsexp(ma), 'fate', p)
                     c.acr(e)
                     fater.sai()
                     pista = 'ocupada'
-            elif pista == 'ocupada' and evt.cat() == 'chega': 
-                    fater.entra(ic) 
-                    if fater.comp() > nmea:
-                        nmea = fater.comp()
+            else:
+                e = evento(ic + obsexp(me), 'fate', p)
+                c.acr(e)
+                fater.entra(ic) 
+                if fater.comp() > nmea:
+                    nmea = fater.comp()
 
                     
         elif evt.cat() == 'fate' or evt.cat() == 'fdes':
 
+            pista = 'livre' # frees the runway
+
+            if isinstance(c.getIndex('prioritario'), float): # orders the priority plane waiting longer to land
+                c.retira(c.getIndex('prioritario'))
+                e = evento(ic + obsexp(me), 'fest', 'indiferente')
+                c.acr(e)
+
             # checkar se existe algum aviao prioritario e manda-lo aterrar
-            # se existerem menos de y avioes para fdesr, podem fater os outros avioes
+            # se existerem menos de y avioes para descolar, podem aterrar os outros avioes
             # se nao existerem avioes nas filas, pista livre         
                 
 
@@ -95,20 +105,15 @@ def simula(mc1, mc2, ma, me, md, x, ts):
                     c.acr(e)
                     fdesc.entra(ic) 
 
-
-
-
     def finaliza():
         
-        print('Tempo medio de espera para fdesr', tmed)
-        print('Tempo maximo de espera para fater de um aviao prioritario', tmeap)
-        print('Tempo maximo de espera para fater de um aviao nao prioritario','%.2f' % tmeanp)
-        print('Numero maximo de avioes a espera para fater', nmea)  
-        print('Numero total de avioes que desistiram de estar a espera para fater', nad)  
+        print('Tempo medio de espera para descolar', tmed)
+        print('Tempo maximo de espera para aterrar de um aviao prioritario', tmeap)
+        print('Tempo maximo de espera para aterrar de um aviao nao prioritario','%.2f' % tmeanp)
+        print('Numero maximo de avioes a espera para aterrar', nmea)  
+        print('Numero total de avioes que desistiram de estar a espera para aterrar', nad)  
         print('Numero maximo de avioes que esteve no aeroporto', nma)  
         
-    
-    
     # corpo do programa simulador:       
     inicializa()
     while pe.inst() <= ts:
@@ -116,7 +121,8 @@ def simula(mc1, mc2, ma, me, md, x, ts):
         # simula próximo evento:
         simula_evento(pe)
         # atualiza próximo evento a simular
-        c.retira()
+        c.retira(0)
         pe = c.proximo()
     finaliza()
     #fim do programa simulador  
+

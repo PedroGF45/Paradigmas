@@ -11,7 +11,7 @@ class fila_aterragem:
         
     def vaziaQ(self):
         return self._ri == []
-    
+
     def sai(self):
         if self.vaziaQ():
             print('operacao sai aplicada a fila vazia')

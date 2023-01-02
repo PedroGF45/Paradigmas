@@ -16,9 +16,14 @@ class cap:
     def vaziaQ(self):
         return self._ri == []
 
-    def existeQ(self, elemento):
+    def comp(self):
+        return len(self._ri)
+
+    def getIndex(self, elemento):
         for i in range(len(self._ri)):
-            return elemento in self._ri[i]      
+            if elemento == self._ri[i].pri():
+                return i
+               
 
     def retira(self, elemento):
         if self.vaziaQ():
@@ -31,3 +36,7 @@ class cap:
             raise ValueError('operação primeiro aplicada a fila vazia')
         else:
             return self._ri[0]
+
+    def mostra(self):
+        for i in range(len(self._ri)):
+            print(dict(inst = self._ri[i].inst(), cat = self._ri[i].cat(), prio = self._ri[i].pri()))
