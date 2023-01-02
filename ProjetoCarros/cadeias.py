@@ -1,4 +1,4 @@
-from eventos import*
+from eventos import evento
 
 class cap:
     
@@ -29,3 +29,7 @@ class cap:
             print('Operação primeiro aplicada a fila vazia')
         else:
             return self._ri[0]
+
+    def mostra(self):
+        for i in range(len(self._ri)):
+            print(dict(inst = self._ri[i].inst(), cat = self._ri[i].cat(), prio = self._ri[i].pri()))

@@ -14,7 +14,7 @@ class fila_aterragem:
 
     def sai(self):
         if self.vaziaQ():
-            print('operacao sai aplicada a fila vazia')
+            print('operacao sai do crl aplicada a fila vazia')
         else:
             del(self._ri[0])
             

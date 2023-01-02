@@ -1,8 +1,8 @@
-from random import *
-from math import *
-from eventos import *
-from cadeias import *
-from filas import *
+from random import randint, random
+from math import log
+from eventos import evento
+from cadeias import cap
+from filas import fila
 
 def simula(tec, tpt, tdp, ts):
     
@@ -18,7 +18,7 @@ def simula(tec, tpt, tdp, ts):
         c=cap()
         f=fila()
         ic=0
-        e=evento(ic+obsexp(tec),'cheg')
+        e=evento(ic+obsexp(tec),'cheg', 'crl')
         c.acr(e)
         pe=e
         portageiro = 'livre'
@@ -26,13 +26,13 @@ def simula(tec, tpt, tdp, ts):
         nmaxt=0
         tmaxe = 0
         ncheg = 0
-        
+        nmaxf = 0
     def simula_evento(evt):
             global c, f, ic, pe, portageiro, nct, nmaxt, nmaxf, tmaxe, ncheg
             if evt.cat() == 'cheg':
-                e = evento(ic+obsexp(tec), 'cheg')
+                e = evento(ic+obsexp(tec), 'cheg', 'crl')
                 c.acr(e)
-                e = evento(ic+obsexp(tpt), 'fimt')
+                e = evento(ic+obsexp(tpt), 'fimt', 'crl')
                 c.acr(e)
                 nct= nct + 1
                 if nct > nmaxt:
@@ -49,7 +49,7 @@ def simula(tec, tpt, tdp, ts):
                             
                     else:
                         portageiro = 'ocupado'
-                        e = evento(ic+obsexp(tdp),'fpag')
+                        e = evento(ic+obsexp(tdp),'fpag', 'crl')
                         c.acr(e)
                         
             else:#evt.cat() == 'fpag'
@@ -59,7 +59,7 @@ def simula(tec, tpt, tdp, ts):
                     if ic - f.primeiro() > tmaxe: #instrumentação 
                         tmaxe = ic - f.primeiro()
                         f.sai()
-                        e = evento(ic+obsexp(tdp),'fpag')
+                        e = evento(ic+obsexp(tdp),'fpag', 'crl')
                         c.acr(e)
              
     def finaliza():
@@ -73,9 +73,12 @@ def simula(tec, tpt, tdp, ts):
         # corpo do programa simulador:
         
     inicializa()
+    i = 0
     while pe.inst() <= ts:
         ic = pe.inst()
         # simula prox evento
+        print(dict(iter = i, inst = pe.inst(), cat = pe.cat(), prio = pe.pri()))
+        c.mostra()
         simula_evento(pe)
         #atualiza prox evento a simular
         c.retira()
