@@ -96,16 +96,9 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
                 pista = 'livre'
 
             if fater.comp() > 15:
-                print(c.comp())
-                print(fater.comp())
-                print(ic)
                 l = 0
                 while l < c.comp():
-                    print(l)
-                    print(ic - c.mostraE(l).inst() > 20)
-                    print(c.mostraE(l).cat() == 'fate')
-                    if ic - c.mostraE(l).inst() > 20 and c.mostraE(l).cat() == 'fate': # randint(1, 10) == 5 and 
-                        print('algum foi com o crl AHUAUHEHUAEHAUEHAUHEHAUHEHAUEHAUHEUHAEHAUHEUAHEUHAUHEUHAHUEAHUEUHAEHAUHEEAH')
+                    if ic - c.mostraE(l).inst() > 20 and c.mostraE(l).cat() == 'fate' and randint(1, 10) == 5:
                         c.retira(l)
                         fater.sai()
                         nad += 1
@@ -174,4 +167,4 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
     finaliza()
     #fim do programa simulador  
 
-simula(0.5, 0.5 ,50 ,10 ,30 ,10 , 10, 5, 960)
+simula(1, 1 ,100 ,10 ,30 ,10 , 10, 5, 960)
