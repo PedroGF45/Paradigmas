@@ -55,3 +55,14 @@ class fila_descolagem:
         
     def comp(self):
         return len(self._ri)
+
+class fila_media:
+
+    def __init__(self):
+        self._ri = []
+
+    def entra(self,elemento):
+        self._ri.insert(len(self._ri),elemento)
+        
+    def comp(self):
+        return len(self._ri)
