@@ -6,14 +6,14 @@ from filas import fila_aterragem, fila_descolagem
 
 def simula(mc1, mc2, ma, me, md, x, y, ts):
     
-    global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
+    global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p, counter
     
     def obsexp(m):
         z = random()
         return -m * log(z)
     
     def inicializa():
-        global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
+        global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p, counter
     
         c = cap()
         fater = fila_aterragem()
@@ -32,8 +32,9 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
         nmea = 0
         nad = 0
         nma = 0
+        counter = 0
     def simula_evento(evt):
-        global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
+        global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p, counter
         
         if randint(1,x) == x:
             p = 'prioritario'
@@ -105,6 +106,21 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
                 fater.sai()
             elif evt.cat() == 'fdes' and fdesc.comp() > 0:
                 fdesc.sai()
+            
+            if evt.cat() == 'fate':
+                counter += 1
+                if counter > nma:
+                    nma = counter
+            elif evt.cat() == 'fdes': 
+                counter -= 1
+            
+            if evt.pri() == 'prioritario' and not fater.vaziaQ() and (ic - fater.primeiro() > tmeap) :
+                print('O CRL TAS A PERCEVER')
+                tmeap = ic - fater.primeiro()
+
+            if evt.pri() == 'nao_prioritario' and evt.cat() == 'fate' and not fater.vaziaQ() and (ic - fater.primeiro() > tmeanp):
+                print('IQUE PALHAÇO')
+                tmeanp = ic - fater.primeiro()
 
         else:
             e = evento(ic + obsexp(md), 'fdes', 'nao_prioritario')
@@ -147,4 +163,4 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
     finaliza()
     #fim do programa simulador  
 
-simula(0.5, 0.5 ,50 ,10 ,10 ,2 , 10, 960)
+simula(10, 10 ,20 ,10 ,10 ,10 , 10, 960)
