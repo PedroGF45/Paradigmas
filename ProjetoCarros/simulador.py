@@ -42,7 +42,7 @@ def simula(tec, tpt, tdp, ts):
                 nct = nct - 1
                 x = randint(1,5)
                 if x == 5:
-                    if portageiro == 'livre':
+                    if portageiro == 'ocupado':
                         f.entra(ic)
                         if f.comp() > nmaxf:
                             nmaxf = f.comp()
@@ -83,5 +83,8 @@ def simula(tec, tpt, tdp, ts):
         #atualiza prox evento a simular
         c.retira()
         pe = c.proximo()
+        i +=1
     finaliza()
      #fim do programa simulador  
+
+simula(0.5, 0.5, 3, 300)

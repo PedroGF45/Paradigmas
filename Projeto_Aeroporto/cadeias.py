@@ -19,30 +19,46 @@ class cap:
     def comp(self):
         return len(self._ri)
     
-    def getIndexPri(self, elemento):
+    def getIndex(self, elemento):
         for i in range(len(self._ri)):
             if elemento == self._ri[i].pri():
                 return i
+            else:
+                return 0
     
-    def getIndexCat(self, elemento):
+    def getFirstIndex(self, elemento):
         for i in range(len(self._ri)):
             if elemento == self._ri[i].cat():
                 return i
     
-    def moveToFirst(self, i):
-        self._ri.insert(0, self._ri[i])
-
-    def retira(self):
+    def getSecondIndex(self, elemento):
+        indices = []
+        for i in range(len(self._ri)):
+            if elemento == self._ri[i].cat():
+                indices.append(i)
+        if len(indices) > 1:
+            return indices[1]
+        else:
+            return float
+            
+    
+    def moveToSecond(self, i):
+        self._ri.insert(1, self._ri.pop(i))
+        
+    def retira(self, i):
         if self.vaziaQ():
             raise ValueError('operação sai aplicada a fila vazia')
         else:
-            del(self._ri[0])
+            del(self._ri[i])
 
     def proximo(self):
         if self.vaziaQ():
             raise ValueError('operação primeiro aplicada a fila vazia')
         else:
             return self._ri[0]
+
+    def mostraE(self, i):
+        return self._ri[i]
 
     def mostra(self):
         for i in range(len(self._ri)):

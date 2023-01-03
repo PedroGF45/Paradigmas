@@ -20,11 +20,8 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
         fdesc = fila_descolagem()
         ic = 0
 
-        if 1/x == x:
-            p = 'prioritario'
-        else:
-            p = 'nao_prioritario'
-        e = evento(ic + obsexp(mc1), 'chega', p) 
+        
+        e = evento(ic + obsexp(mc1), 'chega', 'nao_prioritario') 
         c.acr(e)
         pe = e
 
@@ -38,64 +35,79 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
     def simula_evento(evt):
         global c, fater, fdesc, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p
         
+        if randint(1,x) == x:
+            p = 'prioritario'
+        else:
+            p = 'nao_prioritario'
+
         if evt.cat() == 'chega':
             if (ts > 180 and ts < 660): # arrival of new planes depending on the current time of the simulation
-                e = evento(ic + obsexp(mc2), 'chega', 'indiferente') 
+                e = evento(ic + obsexp(mc2), 'chega', 'nao_prioritario') 
                 c.acr(e)
             else:
-                e = evento(ic + obsexp(mc1), 'chega', 'indiferente')
+                e = evento(ic + obsexp(mc1), 'chega', 'nao_prioritario')
                 c.acr(e)
 
-            if randint(1,x) == x:
-                p = 'prioritario'
+            if pista == 'livre': 
+                e = evento(ic + obsexp(ma), 'fest', 'nao_prioritario')
+                c.acr(e)
+                pista = 'ocupada'
             else:
-                p = 'nao_prioritario'
-
-            if pista == 'livre':
-                if fater.vaziaQ(): # check if queue is empty
-                    e = evento(ic + obsexp(ma), 'fate', p)
-                    c.acr(e)
-                    pista = 'ocupada'
-                else:
-                    e = evento(ic + obsexp(ma), 'fate', p)
-                    c.acr(e)
-                    fater.sai()
-                    pista = 'ocupada'
-            else:
-                e = evento(ic + obsexp(me), 'fate', p)
+                e = evento(ic + obsexp(ma), 'fate', p)
                 c.acr(e)
                 fater.entra(ic) 
                 if fater.comp() > nmea:
                     nmea = fater.comp()
-
-                    
+                          
         elif evt.cat() == 'fate' or evt.cat() == 'fdes':
 
-            pista = 'livre' # frees the runway
-
             # checkar se existe algum aviao prioritario e manda-lo aterrar
-            if fater.comp() > 0 and isinstance(c.getIndexPri('prioritario'), int): # orders the priority plane waiting longer to land
-                c.moveToFirst(c.getIndexPri('prioritario'))
-                e = evento(ic + obsexp(me), 'fest', 'indiferente')
+            if fater.comp() > 0 and c.getIndex('prioritario') != 0 : # orders the priority plane waiting longer to land´
+                e = evento(ic + obsexp(me), 'fest', 'nao_prioritario')
                 c.acr(e)
+                c.moveToSecond(c.getIndex('prioritario'))
+                print('MOVEU PRIORITARIO')
                 pista = 'ocupada'
-                fater.sai()
-                print('OK')
             # se existerem menos de y avioes para descolar, podem aterrar os outros avioes
-            elif fdesc.comp() > y and not c.vaziaQ():
-                c.moveToFirst(c.getIndexCat('fdes'))
+            elif (fdesc.comp() > y or fater.comp() == 0) and isinstance(c.getFirstIndex('fdes'), int):
                 pista = 'ocupada'
-                fdesc.sai()
-                print('xd')
-            elif fater.comp() > 0 and isinstance(c.getIndexCat('fate'), int):
-                c.moveToFirst(c.getIndexCat('fate'))
-                e = evento(ic + obsexp(me), 'fest', 'indiferente')
+                if evt.cat() == 'fate':
+                    c.moveToSecond(c.getFirstIndex('fdes'))
+                    print('MOVEU PRIMEIRO DO FDES')
+                elif isinstance(c.getSecondIndex('fdes'), int):
+                    c.moveToSecond(c.getSecondIndex('fdes'))
+                    print('MOVEU SEGUNDO DO FDES')
+                
+            elif fater.comp() > 0 and isinstance(c.getFirstIndex('fate'), int):
+                e = evento(ic + obsexp(me), 'fest', 'nao_prioritario')
                 c.acr(e)
                 pista = 'ocupada'
-                fater.sai()   
-                print('wtf')
+                if evt.cat() == 'fdes':
+                    c.moveToSecond(c.getFirstIndex('fate'))
+                    print('MOVEU PRIMEIRO DO FATE')
+                elif isinstance(c.getSecondIndex('fate'), int):
+                    c.moveToSecond(c.getSecondIndex('fate'))
+                    print('MOVEU SEGUNDO DO FATE')
+
+                
+            else:
+                pista = 'livre'
+
+            if fater.comp() > 15:
+                for i in range(c.comp()):
+                    if ic - c.mostraE(i).inst() > 20 and c.mostraE(i).cat() == 'fate': # randint(1, 10) == 5 and 
+                        print('algum foi com o crl AHUAUHEHUAEHAUEHAUHEHAUHEHAUEHAUHEUHAEHAUHEUAHEUHAUHEUHAHUEAHUEUHAEHAUHEEAH')
+                        c.retira(i)
+                        fater.sai()
+                        nad += 1
+
+            if evt.cat() == 'fate' and fater.comp() > 0: 
+                fater.sai()
+            elif evt.cat() == 'fdes' and fdesc.comp() > 0:
+                fdesc.sai()
+
         else:
-            e = evento(ic + obsexp(md), 'fdes', 'indiferente')
+            e = evento(ic + obsexp(md), 'fdes', 'nao_prioritario')
             c.acr(e)
             fdesc.entra(ic)
 
@@ -114,17 +126,25 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
     while pe.inst() <= ts:
         ic = pe.inst()
         # simula próximo evento:
-        print('c -> ', dict(iter = i, inst = pe.inst(), cat = pe.cat(), prio = pe.pri()))
-        c.mostra()
-        simula_evento(pe)
-        # atualiza próximo evento a simular
-        c.primeiro()
-        c.retira()
         print('--------------------------')
-        c.primeiro()
+        print('evento simulado -> ', dict(iter = i, inst = pe.inst(), cat = pe.cat(), prio = pe.pri()))
+        #c.mostra()
+        #print('fila pa aterrar ', fater.comp())
+        #print('fila pa descolar ', fdesc.comp())
+        #print('SIMULAÇAO')
+        simula_evento(pe)
+        print('fila pa aterrar ', fater.comp())
+        print('fila pa descolar ', fdesc.comp())
+        # atualiza próximo evento a simular
+        c.retira(0)
+        
         c.mostra()
+        
         pe = c.proximo()
+        #print('proximo evento -> ', dict(iter = i, inst = pe.inst(), cat = pe.cat(), prio = pe.pri()))
+        print('--------------------------')
         i += 1
     finaliza()
     #fim do programa simulador  
 
+simula(0.5, 0.5 ,50 ,10 ,10 ,2 , 10, 960)
