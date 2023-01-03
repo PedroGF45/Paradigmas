@@ -4,7 +4,7 @@ from eventos import evento
 from cadeias import cap
 from filas import fila_aterragem, fila_descolagem, fila_media
 
-def simula(mc1, mc2, ma, me, md, x, y, ts):
+def simula(mc1, mc2, ma, me, md, x, y, k, ts):
     
     global c, fater, fdesc, fmed, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p, counter
     
@@ -20,7 +20,12 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
         fdesc = fila_descolagem()
         fmed = fila_media()
         ic = 0
-
+        z = 0
+        while z < k:
+            e = evento(ic + obsexp(md), 'fdes', 'nao_prioritario')
+            c.acr(e)
+            z += 1
+            fdesc.entra(ic)
         
         e = evento(ic + obsexp(mc1), 'chega', 'nao_prioritario') 
         c.acr(e)
@@ -91,12 +96,21 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
                 pista = 'livre'
 
             if fater.comp() > 15:
-                for i in range(c.comp()):
-                    if ic - c.mostraE(i).inst() > 20 and c.mostraE(i).cat() == 'fate': # randint(1, 10) == 5 and 
+                print(c.comp())
+                print(fater.comp())
+                print(ic)
+                l = 0
+                while l < c.comp():
+                    print(l)
+                    print(ic - c.mostraE(l).inst() > 20)
+                    print(c.mostraE(l).cat() == 'fate')
+                    if ic - c.mostraE(l).inst() > 20 and c.mostraE(l).cat() == 'fate': # randint(1, 10) == 5 and 
                         print('algum foi com o crl AHUAUHEHUAEHAUEHAUHEHAUHEHAUEHAUHEUHAEHAUHEUAHEUHAUHEUHAHUEAHUEUHAEHAUHEEAH')
-                        c.retira(i)
+                        c.retira(l)
                         fater.sai()
                         nad += 1
+                    else:
+                        l += 1
 
             if evt.cat() == 'fate' and fater.comp() > 0: 
                 fater.sai()
@@ -160,4 +174,4 @@ def simula(mc1, mc2, ma, me, md, x, y, ts):
     finaliza()
     #fim do programa simulador  
 
-simula(5, 5 ,20 ,10 ,30 ,10 , 10, 960)
+simula(0.5, 0.5 ,50 ,10 ,30 ,10 , 10, 5, 960)
