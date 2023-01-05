@@ -15,22 +15,29 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
     def inicializa():
         global c, fater, fdesc, fmed, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p, counter
     
+        # create objects using classes provided
         c = cap()
         fater = fila_aterragem()
         fdesc = fila_descolagem()
         fmed = fila_media()
+        
+        # set the initial instant of the simulation to 0
         ic = 0
-        z = 0
-        while z < k:
+        
+        # number of planes ready to take-off in the beginning of the simulation
+        n = 0 
+        while n < k:
             e = evento(ic + obsexp(md), 'fdes', 'nao_prioritario')
             c.acr(e)
-            z += 1
             fdesc.entra(ic)
+            n += 1
         
+        # add the first airplane arriving at the airport
         e = evento(ic + obsexp(mc1), 'chega', 'nao_prioritario') 
         c.acr(e)
         pe = e
 
+        #definition of other variables
         pista = 'livre'
         tmed = 0
         tmeap = 0
@@ -39,6 +46,7 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
         nad = 0
         nma = 0
         counter = 0
+
     def simula_evento(evt):
         global c, fater, fdesc, fmed, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p, counter
         
@@ -68,33 +76,40 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
                           
         elif evt.cat() == 'fate' or evt.cat() == 'fdes':
 
-            # checkar se existe algum aviao prioritario e manda-lo aterrar
-            if fater.comp() > 0 and c.getIndex('prioritario') != 0 : # orders the priority plane waiting longer to land´
+            # If there's a priority plane, then tell the priorty plane waiting longer to land right away
+            if fater.comp() > 0 and c.getfirstIndexPri('prioritario') != 0 : 
                 e = evento(ic + obsexp(me), 'fest', 'nao_prioritario')
                 c.acr(e)
-                c.moveToSecond(c.getIndex('prioritario'))
+                c.moveToSecond(c.getfirstIndexPri('prioritario'))
                 pista = 'ocupada'
-            # se existerem menos de y avioes para descolar, podem aterrar os outros avioes
-            elif (fdesc.comp() > y or fater.comp() == 0) and isinstance(c.getFirstIndex('fdes'), int):
+
+            # if there's more than y planes waiting to land, tell the plane waiting longer in the queue to take-off
+            elif (fdesc.comp() > y or fater.comp() == 0) and isinstance(c.getFirstIndexCat('fdes'), int):
                 pista = 'ocupada'
                 if evt.cat() == 'fate':
-                    c.moveToSecond(c.getFirstIndex('fdes'))
-                elif isinstance(c.getSecondIndex('fdes'), int):
-                    c.moveToSecond(c.getSecondIndex('fdes'))
+                    c.moveToSecond(c.getFirstIndexCat('fdes'))
+
+                # careful - if the event being simulated has the category 'fdes' then we should move the second event with 'fdes' and not the first
+                elif isinstance(c.getSecondIndexCat('fdes'), int):
+                    c.moveToSecond(c.getSecondIndexCat('fdes'))
                 
-            elif fater.comp() > 0 and isinstance(c.getFirstIndex('fate'), int):
+            # if there's planes waiting to land, tell the plane waiting longer to land
+            elif fater.comp() > 0 and isinstance(c.getFirstIndexCat('fate'), int):
                 e = evento(ic + obsexp(me), 'fest', 'nao_prioritario')
                 c.acr(e)
                 pista = 'ocupada'
                 if evt.cat() == 'fdes':
-                    c.moveToSecond(c.getFirstIndex('fate'))
-                elif isinstance(c.getSecondIndex('fate'), int):
-                    c.moveToSecond(c.getSecondIndex('fate'))
+                    c.moveToSecond(c.getFirstIndexCat('fate'))
 
-                
+                # careful - if the event being simulated has the category 'fate' then we should move the second event with 'fdes' and not the first
+                elif isinstance(c.getSecondIndexCat('fate'), int):
+                    c.moveToSecond(c.getSecondIndexCat('fate'))
+
+            # otherwise the runway is free    
             else:
                 pista = 'livre'
 
+            # if there's more than 15 planes waiting to land and a plane is waiting more than 20 mins to land it has a probability of 1/10 to give-up landing
             if fater.comp() > 15:
                 l = 0
                 while l < c.comp():
@@ -105,11 +120,13 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
                     else:
                         l += 1
 
+            # remove plane from waiting queues
             if evt.cat() == 'fate' and fater.comp() > 0: 
                 fater.sai()
             elif evt.cat() == 'fdes' and fdesc.comp() > 0:
                 fdesc.sai()
             
+            # count of maximum number of planes in the airport
             if evt.cat() == 'fate':
                 counter += 1
                 if counter > nma:
@@ -117,15 +134,19 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
             elif evt.cat() == 'fdes': 
                 counter -= 1
             
+            # calculus of maximum holding landing time of priority planes
             if evt.pri() == 'prioritario' and not fater.vaziaQ() and (ic - fater.primeiro() > tmeap) :
                 tmeap = ic - fater.primeiro()
 
+            # calculus of maximum holding landing time of non priority planes
             if evt.pri() == 'nao_prioritario' and evt.cat() == 'fate' and not fater.vaziaQ() and (ic - fater.primeiro() > tmeanp):
                 tmeanp = ic - fater.primeiro()
 
+            # adding instants of take-off times to a list
             if evt.cat() == 'fdes' and not fdesc.vaziaQ():
                 fmed.entra(ic - fdesc.primeiro())
 
+        #evt.cat() == 'fest'
         else:
             e = evento(ic + obsexp(md), 'fdes', 'nao_prioritario')
             c.acr(e)
@@ -140,31 +161,12 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
         print('Numero total de avioes que desistiram de estar a espera para aterrar', nad)  
         print('Numero maximo de avioes que esteve no aeroporto', nma)  
         
-    # corpo do programa simulador:       
+    # body of the simulator:       
     inicializa()
-    i = 0
     while pe.inst() <= ts:
         ic = pe.inst()
-        # simula próximo evento:
-        #print('--------------------------')
-        #print('evento simulado -> ', dict(iter = i, inst = pe.inst(), cat = pe.cat(), prio = pe.pri()))
-        #c.mostra()
-        #print('fila pa aterrar ', fater.comp())
-        #print('fila pa descolar ', fdesc.comp())
-        #print('SIMULAÇAO')
         simula_evento(pe)
-        #print('fila pa aterrar ', fater.comp())
-        #print('fila pa descolar ', fdesc.comp())
-        # atualiza próximo evento a simular
         c.retira(0)
-        
-        #c.mostra()
-        
         pe = c.proximo()
-        #print('proximo evento -> ', dict(iter = i, inst = pe.inst(), cat = pe.cat(), prio = pe.pri()))
-        #print('--------------------------')
-        i += 1
     finaliza()
-    #fim do programa simulador  
-
-simula(1, 1 ,100 ,10 ,30 ,10 , 10, 5, 960)
+    #end of simulation  
