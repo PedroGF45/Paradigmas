@@ -117,8 +117,7 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
                         c.retira(l)
                         fater.sai()
                         nad += 1
-                    else:
-                        l += 1
+                    l += 1
 
             # remove plane from waiting queues
             if evt.cat() == 'fate' and fater.comp() > 0: 
