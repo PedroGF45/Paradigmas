@@ -66,7 +66,7 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
             if pista == 'livre': 
                 e = evento(ic + obsexp(me), 'fest', 'nao_prioritario')
                 c.acr(e)
-                pista = 'ocupada'
+                #pista = 'ocupada'
             else:
                 e = evento(ic + obsexp(ma), 'fate', p)
                 c.acr(e)
@@ -117,6 +117,7 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
                         c.retira(l)
                         fater.sai()
                         nad += 1
+                    #else:
                     l += 1
 
             # remove plane from waiting queues
