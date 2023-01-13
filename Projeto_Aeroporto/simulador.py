@@ -4,6 +4,8 @@ from eventos import evento
 from cadeias import cap
 from filas import fila_aterragem, fila_descolagem, fila_media
 
+# problema de instanciacao de eventos
+
 def simula(mc1, mc2, ma, me, md, x, y, k, ts):
     
     global c, fater, fdesc, fmed, ic, pe, pista, tmed, tmeap, tmeanp, nmea, nad, nma, p, counter
@@ -64,11 +66,11 @@ def simula(mc1, mc2, ma, me, md, x, y, k, ts):
                 c.acr(e)
 
             if pista == 'livre': 
-                e = evento(ic + obsexp(me), 'fest', 'nao_prioritario')
+                e = evento(ic + obsexp(me), 'fate', 'nao_prioritario')
                 c.acr(e)
-                #pista = 'ocupada'
+                pista = 'ocupada'
             else:
-                e = evento(ic + obsexp(ma), 'fate', p)
+                e = evento(ic + obsexp(ma), 'fate', p) # nao ha necessidade de calcular 
                 c.acr(e)
                 fater.entra(ic) 
                 if fater.comp() > nmea:
